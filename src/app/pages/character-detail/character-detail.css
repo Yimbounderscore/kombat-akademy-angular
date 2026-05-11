@@ -32,8 +32,7 @@
   transition: background 0.25s, color 0.25s;
 }
 
-.char-nav-link:hover,
-.char-nav-btn:hover {
+.char-nav-link:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
@@ -44,20 +43,7 @@
 
 .char-header {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.char-header-info {
-  flex: 1;
-}
-
-.char-nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  justify-content: center;
 }
 
 .char-header-img {
@@ -672,8 +658,7 @@
     width: 200px;
   }
 
-  .char-nav,
-  .char-nav-links {
+  .char-nav {
     justify-content: center;
   }
 
