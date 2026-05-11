@@ -41,6 +41,7 @@ export class App implements OnInit {
     // is looking at the home page. By the time they click on
     // "Characters" or "Move List", the data is already loaded.
     this.gameDataService.loadMoveList().subscribe();
+    this.gameDataService.loadKameoMoveList().subscribe();
     this.gameDataService.loadCombos().subscribe();
   }
 }

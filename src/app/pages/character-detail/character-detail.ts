@@ -12,10 +12,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgFor, NgIf, NgClass } from '@angular/common';
 import { CHARACTERS, CHARACTER_LIST, Character } from '../../data/characters';
 import { GameDataService, MoveData, ComboData } from '../../services/game-data';
+import { InputNotationComponent } from '../../components/input-notation/input-notation';
 
 @Component({
   selector: 'app-character-detail',
-  imports: [RouterLink, NgFor, NgIf, NgClass],
+  imports: [RouterLink, NgFor, NgIf, NgClass, InputNotationComponent],
   templateUrl: './character-detail.html',
   styleUrl: './character-detail.css',
 })

@@ -1,0 +1,115 @@
+<div *ngIf="kameo"
+     class="kameo-page"
+     [style.--kameo-color]="kameo.color"
+     [style.--kameo-color-dark]="kameo.colorDark">
+  <div class="page-content">
+    <section id="kameo-header">
+      <div class="kameo-header-title">{{ kameo.name.toUpperCase() }} (KAMEO)</div>
+      <div class="kameo-header-content">
+        <div class="kameo-img-wrapper">
+          <img [src]="'/assets/images/kameos/renders/' + kameo.slug + '.png'" [alt]="kameo.name + ' render'" />
+        </div>
+        <div class="kameo-nav-wrapper">
+          <div class="kameo-nav">
+            <a href="#kameo-move-list">
+              <div>
+                <i class="fa-solid fa-rectangle-list"></i>
+                MOVE LIST
+              </div>
+            </a>
+            <a href="#kameo-strategy">
+              <div>
+                <i class="fa-solid fa-brain"></i>
+                STRATEGY
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="kameo-overview">
+      <h2>{{ kameo.name }} <span>{{ kameo.type }}</span></h2>
+      <p>{{ kameo.description }}</p>
+      <div class="kameo-summary">
+        <div class="kameo-card">
+          <span class="kameo-card-label">TYPE</span>
+          <div class="kameo-card-value">{{ kameo.type }}</div>
+        </div>
+        <div class="kameo-card">
+          <span class="kameo-card-label">HEALTH</span>
+          <div class="kameo-card-value">{{ kameo.health }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kameo-move-list">
+      <h1>MOVE LIST</h1>
+
+      <div class="loading" *ngIf="isLoading">Loading kameo moves...</div>
+
+      <ng-container *ngIf="!isLoading">
+        <div *ngFor="let subcategory of getSubcategories()">
+          <div class="subcategory-header" *ngIf="subcategory">
+            <h3>{{ subcategory }}</h3>
+          </div>
+
+          <div class="table-container" *ngIf="getMovesBySubcategory(subcategory).length">
+            <table>
+              <thead>
+                <tr>
+                  <th>MOVE NAME</th>
+                  <th>COMMAND</th>
+                  <th>BLOCK</th>
+                  <th>DAMAGE</th>
+                  <th>STARTUP</th>
+                  <th>ACTIVE</th>
+                  <th>RECOVERY</th>
+                  <th>CANCEL</th>
+                  <th>HIT ADV</th>
+                  <th>BLOCK ADV</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let move of getMovesBySubcategory(subcategory)">
+                  <td class="move-name">{{ move.move_name }}</td>
+                  <td class="move-command">
+                    <app-input-notation [input]="move.command" size="s"></app-input-notation>
+                  </td>
+                  <td class="move-block" [ngClass]="getBlockClass(move.block_type)">
+                    <span *ngIf="move.block_type">{{ move.block_type }}</span>
+                  </td>
+                  <td>{{ move.hit_damage }}</td>
+                  <td>{{ move.startup }}</td>
+                  <td>{{ move.active }}</td>
+                  <td>{{ move.recovery }}</td>
+                  <td>{{ move.cancel }}</td>
+                  <td>{{ move.hit_advantage }}</td>
+                  <td>{{ move.block_advantage }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="empty-state" *ngIf="moves.length === 0">
+          <p>No move data found for this Kameo.</p>
+        </div>
+      </ng-container>
+    </section>
+
+    <section id="kameo-strategy">
+      <h1>STRATEGY</h1>
+      <div class="strategy-box">
+        <p>Strategy notes from the original site are still being ported.</p>
+        <p>For now, use this Kameo to extend pressure, cover space, and convert stray hits into extra damage.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="not-found" *ngIf="!kameo && !isLoading">
+  <h2>Kameo Not Found</h2>
+  <p>The Kameo you're looking for doesn't exist.</p>
+  <a routerLink="/kameos">Back to Kameos</a>
+</div>

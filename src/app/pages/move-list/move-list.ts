@@ -3,10 +3,11 @@ import { NgFor, NgIf, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GameDataService, MoveData } from '../../services/game-data';
+import { InputNotationComponent } from '../../components/input-notation/input-notation';
 
 @Component({
   selector: 'app-move-list',
-  imports: [NgFor, NgIf, NgClass, FormsModule],
+  imports: [NgFor, NgIf, NgClass, FormsModule, InputNotationComponent],
   templateUrl: './move-list.html',
   styleUrl: './move-list.css',
 })

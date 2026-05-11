@@ -1,0 +1,103 @@
+/*
+ * BUTTON ICONS CSS
+ *
+ * These styles control how the SVG button icons appear.
+ * The icons are hidden SVG elements that get referenced
+ * using <svg><use href="#icon-id"></svg>.
+ */
+
+/* Hidden SVG sprite - icons are referenced but not displayed directly */
+.btn-icons {
+  display: none;
+  left: -9999px;
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* Container for button input icons */
+.btn-inputs {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  vertical-align: top;
+  gap: 0;
+}
+
+/* Different sizes for the button icons */
+.btn-inputs.btn-inputs-xs { min-height: 16px; }
+.btn-inputs.btn-inputs-s { min-height: 24px; }
+.btn-inputs.btn-inputs-m { min-height: 32px; }
+.btn-inputs.btn-inputs-l { min-height: 48px; }
+.btn-inputs.btn-inputs-xl { min-height: 64px; }
+
+/* Separator spacing between icons */
+.btn-inputs.btn-inputs-xs .btn-inputs-separator,
+.btn-inputs.btn-inputs-s .btn-inputs-separator { padding: 0 6px; }
+.btn-inputs.btn-inputs-m .btn-inputs-separator { padding: 0 10px; }
+.btn-inputs.btn-inputs-l .btn-inputs-separator,
+.btn-inputs.btn-inputs-xl .btn-inputs-separator { padding: 0 14px; }
+
+/* Individual icon sizing */
+.btn-icon {
+  box-sizing: content-box;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.btn-inputs-xs .btn-icon { height: 16px; width: 16px; }
+.btn-inputs-s .btn-icon { height: 24px; width: 24px; }
+.btn-inputs-m .btn-icon { height: 32px; width: 32px; }
+.btn-inputs-l .btn-icon { height: 48px; width: 48px; }
+.btn-inputs-xl .btn-icon { height: 64px; width: 64px; }
+
+/* Universal button styles (the numbered buttons 1-4) */
+.universal-number {
+  fill: #fff;
+  paint-order: stroke fill markers;
+  stroke: rgba(0, 0, 0, 0.75);
+  stroke-linejoin: round;
+  stroke-width: 8;
+}
+
+.universal-circle {
+  stroke: #000;
+  paint-order: stroke fill markers;
+  stroke-linejoin: round;
+  stroke-width: 8;
+}
+
+.universal-blue { fill: #4040e0; }
+.universal-yellow { fill: #e0e040; }
+.universal-green { fill: #40e040; }
+.universal-red { fill: #e04040; }
+
+/* Direction arrow buttons */
+.direction-btn {
+  fill: #fff;
+}
+
+.light-theme .direction-btn {
+  fill: #000;
+}
+
+/* Platform-specific button positioning */
+.playstation-face use, .xbox-face use, .switch-face use {
+  transform: translate(5px, 5px);
+}
+.playstation-l1 use, .playstation-r1 use {
+  transform: translate(13px, 21px);
+}
+.playstation-l2 use, .playstation-r2 use {
+  transform: translate(13px, 5px);
+}
+.xbox-lb use, .xbox-rb use {
+  transform: translate(5px, 31.5px);
+}
+.xbox-lt use, .xbox-rt use {
+  transform: translate(16.5px, 5px);
+}
+.switch-l use, .switch-r use, .switch-zl use, .switch-zr use {
+  transform: translate(17px, 17px);
+}

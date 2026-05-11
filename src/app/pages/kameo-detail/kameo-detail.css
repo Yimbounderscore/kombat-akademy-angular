@@ -1,0 +1,214 @@
+/*
+ * KAMEO DETAIL PAGE CSS
+ */
+.kameo-page {
+  padding: 0;
+}
+
+.kameo-page #kameo-header {
+  padding-bottom: 32px;
+}
+
+.kameo-page section:not(#kameo-header) {
+  border-bottom: 1px solid var(--kameo-color);
+  padding: 32px 0;
+}
+
+.kameo-header-title {
+  font-size: 32px;
+  font-weight: 200;
+}
+
+.kameo-header-content {
+  display: flex;
+}
+
+.kameo-img-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.kameo-img-wrapper img {
+  height: fit-content;
+  width: 75%;
+}
+
+.kameo-nav-wrapper {
+  width: 50%;
+}
+
+.kameo-nav {
+  margin: 0 auto;
+  padding-top: 32px;
+  width: 75%;
+}
+
+.kameo-nav a {
+  display: block;
+  text-decoration: none;
+}
+
+.kameo-nav div {
+  background-color: rgb(16, 16, 16);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 8px;
+  padding: 16px 0;
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.kameo-nav div:hover {
+  border-color: var(--kameo-color);
+  color: var(--kameo-color);
+}
+
+.kameo-nav .fa-solid {
+  margin-left: 16px;
+  text-align: center;
+  width: 12.5%;
+}
+
+.kameo-overview h2,
+.kameo-page h1,
+.kameo-page h3 {
+  color: var(--kameo-color);
+}
+
+.kameo-overview h2 {
+  font-weight: 200;
+}
+
+.kameo-overview h2 span {
+  color: var(--color);
+  font-weight: 100;
+}
+
+.kameo-overview p,
+.strategy-box p {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.kameo-summary {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.kameo-card {
+  background: var(--bg-dark);
+  border-left: 3px solid var(--kameo-color);
+  min-width: 140px;
+  padding: 12px 16px;
+}
+
+.kameo-card-label {
+  color: var(--primary-color);
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.kameo-card-value {
+  font-size: 18px;
+}
+
+.kameo-page h1 {
+  font-size: 32px;
+  font-weight: 200;
+  margin-bottom: 16px;
+}
+
+.subcategory-header {
+  margin: 24px 0 8px 0;
+}
+
+.subcategory-header h3 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 8px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.move-command {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.block-high { color: rgb(255, 128, 128); }
+.block-mid { color: rgb(255, 224, 128); }
+.block-low { color: rgb(128, 192, 255); }
+.block-overhead { color: rgb(255, 128, 255); }
+.block-throw { color: rgb(128, 255, 128); }
+
+.strategy-box {
+  background: var(--bg-row-1);
+  border-left: 3px solid var(--kameo-color);
+  max-width: 800px;
+  padding: 16px;
+}
+
+.strategy-box p:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.loading,
+.empty-state,
+.not-found {
+  color: rgb(128, 128, 128);
+  text-align: center;
+}
+
+.loading,
+.empty-state {
+  padding: 48px;
+}
+
+.not-found {
+  padding: 48px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .kameo-header-content {
+    display: block;
+  }
+
+  .kameo-img-wrapper {
+    display: none;
+  }
+
+  .kameo-nav-wrapper {
+    width: unset;
+  }
+
+  .kameo-nav {
+    margin: 16px auto 0 auto;
+    width: unset;
+  }
+
+  .kameo-nav div {
+    padding: 8px 0;
+  }
+
+  .kameo-nav .fa-solid {
+    margin-left: 5%;
+    width: 48px;
+  }
+
+  .kameo-summary {
+    flex-direction: column;
+  }
+
+  .kameo-overview p,
+  .strategy-box p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

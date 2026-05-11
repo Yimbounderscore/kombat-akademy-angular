@@ -1,0 +1,33 @@
+<!--
+  GUIDES PAGE
+
+  This is the main guides page that lists all available guides.
+  It links to The Match guide and other strategy content.
+-->
+<div class="guides-page">
+  <div class="page-title">GUIDES</div>
+  <div class="page-content">
+    <div class="guides-list">
+      <!-- The Match Guide -->
+      <div class="guide-section">
+        <h2>The Match</h2>
+        <div class="guide-links">
+          <a routerLink="/guides/the-match" [queryParams]="{pg: '1'}">The Match</a>
+          <a routerLink="/guides/the-match" [queryParams]="{pg: '2'}">Movement</a>
+          <a routerLink="/guides/the-match" [queryParams]="{pg: '3'}">Moves</a>
+          <a routerLink="/guides/the-match" [queryParams]="{pg: '4'}">Mechanics</a>
+        </div>
+      </div>
+
+      <!-- Introduction Guide -->
+      <div class="guide-section">
+        <h2>Introduction</h2>
+        <div class="guide-links">
+          <a routerLink="/guides/intro" [queryParams]="{pg: '1'}">Introduction</a>
+          <a routerLink="/guides/intro" [queryParams]="{pg: '2'}">Controls</a>
+          <a routerLink="/guides/intro" [queryParams]="{pg: '3'}">Preparation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

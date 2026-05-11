@@ -1,0 +1,131 @@
+/*
+ * THE MATCH GUIDE CSS
+ *
+ * Style for the guide pages with content, images, and pagination.
+ */
+.guide-page {
+  padding: 0;
+}
+
+.guide-navigation {
+  margin-bottom: 24px;
+}
+
+.guide-navigation select {
+  min-width: 200px;
+}
+
+/* Guide Content */
+.guide-content {
+  max-width: 800px;
+}
+
+.guide-content h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 32px 0;
+}
+
+.guide-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 32px 0 16px 0;
+}
+
+.guide-content p {
+  font-size: 20px;
+  line-height: 30px;
+  margin: 0 0 16px 0;
+}
+
+.guide-content img {
+  display: block;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.guide-img-right {
+  float: right;
+  max-width: 300px;
+  margin: 0 0 16px 16px;
+}
+
+/* Input notation within guide text */
+.guide-content .btn-inputs {
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
+/* Pagination */
+.guide-pagination {
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+}
+
+.pagination-btn {
+  display: inline-block;
+  background-color: var(--bg-row-1);
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 20px;
+  text-align: center;
+  transition: filter 0.25s;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pagination-btn:hover {
+  filter: brightness(125%);
+}
+
+.pagination-btn.disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 4px;
+}
+
+.pagination-page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-row-1);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: filter 0.25s;
+  border-radius: 4px;
+}
+
+.pagination-page:hover {
+  filter: brightness(125%);
+}
+
+.pagination-page.active {
+  filter: brightness(125%);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .guide-content p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .guide-img-right {
+    float: none;
+    max-width: 100%;
+    margin: 16px 0;
+  }
+}

@@ -3,10 +3,11 @@ import { NgFor, NgIf, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GameDataService, ComboData } from '../../services/game-data';
+import { InputNotationComponent } from '../../components/input-notation/input-notation';
 
 @Component({
   selector: 'app-combos',
-  imports: [NgFor, NgIf, NgClass, FormsModule],
+  imports: [NgFor, NgIf, NgClass, FormsModule, InputNotationComponent],
   templateUrl: './combos.html',
   styleUrl: './combos.css',
 })

@@ -1,9 +1,12 @@
 <!--
   APP COMPONENT (Main Layout)
-  
+
   This is the "master template" for the entire site.
   It wraps every page with the header at the top and footer at the bottom.
   The <router-outlet> is where each page's content gets inserted.
+
+  The SVG sprite at the top contains all the button icons (PlayStation, Xbox, Switch, Universal).
+  These icons are hidden but can be referenced anywhere using <use href="#icon-id">.
 -->
 <app-header></app-header>
 
@@ -14,3 +17,5 @@
 </main>
 
 <app-footer></app-footer>
+
+<!-- SVG Sprite for Button Icons (hidden, referenced by <use>) -->

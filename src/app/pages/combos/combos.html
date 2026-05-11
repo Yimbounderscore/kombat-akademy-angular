@@ -61,7 +61,9 @@
             <span class="combo-meter" *ngIf="combo.meter !== '0'">Meter: {{ combo.meter }}</span>
             <span class="combo-kameo" *ngIf="combo.kameo_name">Kameo: {{ combo.kameo_name }}</span>
           </div>
-          <div class="combo-inputs">{{ combo.combo }}</div>
+          <div class="combo-inputs">
+            <app-input-notation [input]="combo.combo" size="s"></app-input-notation>
+          </div>
           <div class="combo-notes" *ngIf="combo.notes">
             <i class="fa-solid fa-circle-info"></i> {{ combo.notes }}
           </div>

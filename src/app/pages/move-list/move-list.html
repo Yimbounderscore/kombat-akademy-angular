@@ -60,7 +60,9 @@
           <tbody>
             <tr *ngFor="let move of getMovesBySubcategory(subcategory)">
               <td class="move-name">{{ move.move_name }}</td>
-              <td class="move-command">{{ move.command }}</td>
+              <td class="move-command">
+                <app-input-notation [input]="move.command" size="s"></app-input-notation>
+              </td>
               <td class="move-block" [ngClass]="getBlockClass(move.block_type)">
                 <span *ngIf="move.block_type">{{ move.block_type }}</span>
               </td>

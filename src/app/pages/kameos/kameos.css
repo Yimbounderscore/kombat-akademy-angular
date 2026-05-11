@@ -1,0 +1,59 @@
+/*
+ * KAMEOS PAGE CSS
+ *
+ * The kameos roster shows 20 portraits in two rows.
+ */
+.kameos-page {
+  padding: 0;
+}
+
+.kameo-roster {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.kameo-roster-row {
+  display: flex;
+  gap: 8px;
+}
+
+.kameo-roster-row:first-child {
+  margin-bottom: 8px;
+}
+
+.kameo-roster-portrait {
+  aspect-ratio: 13 / 15;
+  background-color: rgb(16, 16, 16);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  display: block;
+  flex: 0 0 calc((100% - 72px) / 10);
+  position: relative;
+  text-decoration: none;
+}
+
+.kameo-roster-portrait:hover {
+  filter: brightness(125%);
+}
+
+@media screen and (max-width: 576px) {
+  .kameo-roster {
+    width: unset;
+  }
+
+  .kameo-roster-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .kameo-roster-row:first-child {
+    margin-bottom: unset;
+  }
+
+  .kameo-roster-portrait {
+    flex-basis: auto;
+    margin-bottom: 8px;
+    width: 16%;
+  }
+}

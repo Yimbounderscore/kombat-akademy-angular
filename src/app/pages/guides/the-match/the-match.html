@@ -1,0 +1,136 @@
+<!--
+  THE MATCH GUIDE PAGE
+
+  This guide explains the basics of a Mortal Kombat 1 match.
+  It has 4 sub-pages: The Match, Movement, Moves, Mechanics.
+  The currentPage variable controls which page is shown.
+-->
+<div class="guide-page">
+  <div class="page-title">THE MATCH</div>
+  <div class="page-content">
+    <!-- Page Navigation -->
+    <div class="guide-navigation">
+      <select (change)="setPage($any($event.target).value)">
+        <option *ngFor="let page of pages" [value]="page.id" [selected]="page.id === currentPage">
+          {{ page.title }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Page 1: The Match -->
+    <div class="guide-content" *ngIf="currentPage === 1">
+      <h1>The Match</h1>
+
+      <img alt="Fight Screen" src="/assets/images/guides/jpg/fight-screen.jpg" class="guide-img-right" />
+
+      <h2>Rounds</h2>
+      <p>In <em>Mortal Kombat 1</em>, matches consist of 2 out of 3 rounds. This means that the opponent must be defeated twice in order to win the match. A match starts off with both characters in the center of the stage. Once the announcer says, <em>"Fight!"</em> both players are free to move. Unlike other fighting games, characters do not reset their positions to the center of the stage at the start of each round. For this reason, it's wise to maintain screen position before transitioning into the next round.</p>
+
+      <h2>Health</h2>
+      <img alt="Health Bar" src="/assets/images/guides/jpg/healthbar.jpg" class="guide-img-right" />
+      <p>Each player has a health bar, where the amount of health depends on the character and Kameo chosen. The goal is to reduce the opponent's health to zero by hitting them with a combination of attacks. Most characters have a default value of 700 health points, while most Kameos have a default value of 300 health points. The total amount of health a player has is the combined health values of both the character and Kameo.</p>
+
+      <h2>Timer</h2>
+      <img alt="Timer" src="/assets/images/guides/jpg/timer.jpg" class="guide-img-right" />
+      <p>The timer is located in the top-center of the screen. Each round lasts for 90 seconds. If neither player has depleted their opponent's health before the timer runs out, the player with more health is declared the winner of that round. In the event that both players have equal health when the timer runs out, the round ends in a draw. It's important to keep track of time throughout the match and aim to defeat the opponent or have greater health before the timer runs out.</p>
+
+      <h2>Super Meter</h2>
+      <img alt="Super Meter" src="/assets/images/guides/jpg/super-meter.jpg" class="guide-img-right" />
+      <p>Near the bottom of the screen lies the <strong>Super Meter</strong>. This is mainly used for performing enhanced versions of attacks and utilizing mechanics such as Breaker. Super Meter is divided into 3 bars, with most enhanced attacks using up 1 bar and Breaker using all 3 bars. Super Meter is built by using Special Moves or when an attack is blocked by the opponent. Having good <strong>meter management</strong> is crucial, as it significantly expands your options against the opponent.</p>
+
+      <h2>Kameo Meter</h2>
+      <img alt="Kameo Meter" src="/assets/images/guides/jpg/kameo-meter.jpg" class="guide-img-right" />
+      <p>Underneath the health bar is the <strong>Kameo Meter</strong>. As the name suggests, this is used for Kameo attacks. Most Kameo attacks use up half of the Kameo Meter, while others use up the entire meter. Unlike Super Meter, Kameo Meter automatically recharges over time. The speed at which the Kameo Meter recharges varies between Kameo attacks. Using a combination of both Super Meter and Kameo Meter is highly recommended as it maximizes the strength of your available resources.</p>
+    </div>
+
+    <!-- Page 2: Movement -->
+    <div class="guide-content" *ngIf="currentPage === 2">
+      <h1>Movement</h1>
+
+      <p>Movement is a fundamental aspect of Mortal Kombat 1. Being able to control your character's position on the stage is crucial for both offense and defense.</p>
+
+      <h2>Walking</h2>
+      <p>Walking is done by tapping or holding Left or Right on the D-pad or analog stick. Walking towards the opponent is called <strong>advancing</strong>, while walking away is called <strong>retreating</strong>. Walking speed varies between characters.</p>
+
+      <h2>Dashing</h2>
+      <p>Dashing is performed by double-tapping Left or Right. There are two types of dashes: <strong>Forward Dash</strong> and <strong>Back Dash</strong>. Dashes can be used to quickly close distance or create space. You can cancel a dash into Special Moves, allowing for dash attacks.</p>
+
+      <h2>Jumping</h2>
+      <p>Jumping is performed by pressing Up on the D-pad or analog stick. You can jump forward or backward by holding a direction. There are three types of jumps: <strong>Neutral Jump</strong> (straight up), <strong>Forward Jump</strong>, and <strong>Backward Jump</strong>. While in the air, you can perform Aerial Attacks.</p>
+
+      <h2>Crouching</h2>
+      <p>Crouching is done by holding Down on the D-pad or analog stick. While crouching, you can perform Low attacks and block Low attacks. Some characters have unique crouching animations.</p>
+    </div>
+
+    <!-- Page 3: Moves -->
+    <div class="guide-content" *ngIf="currentPage === 3">
+      <h1>Moves</h1>
+
+      <h2>Basic Attacks</h2>
+      <p><strong>Basic Attacks</strong> are the most essential attacks performed by the character. These are normally physical attacks consisting of one or more hits. A universal Basic Attack is the uppercut (<app-input-notation input="D+2" size="s"></app-input-notation>), a high attack that deals a heavy amount of damage.</p>
+
+      <p><strong>Kombo Attacks</strong>, a subcategory of Basic Attacks, are a combination of attacks that must be input in rapid succession. Since Kombo Attacks include multiple hits, they'll usually deal greater damage than a normal Basic Attack.</p>
+
+      <p><strong>Aerial Attacks</strong> are attacks that are done mid-air. These are usually done when jumping towards the opponent.</p>
+
+      <p><strong>Throws</strong> are moves that grab the opponent for a small amount of damage. To perform a throw, input the <app-input-notation input="THROW" size="s"></app-input-notation> button.</p>
+
+      <h2>Special Moves</h2>
+      <p><strong>Special Moves</strong> are different from Basic Attacks in that they usually are not physical attacks. They may have unique properties such as granting armor, projectile immunity, health regeneration, or other effects. Special Moves require inputting at least two or more directional buttons and one face button.</p>
+
+      <p>Most Special Moves can be enhanced by inputting <app-input-notation input="EX" size="s"></app-input-notation> simultaneously with the final input of the Special Move. Enhanced Special Moves are stronger than normal Special Moves but cost at least 1 bar of Super Meter.</p>
+
+      <p><strong>Fatal Blow</strong>, a type of Special Move, is a character's most powerful attack and is done by inputting <app-input-notation input="SS+EX" size="s"></app-input-notation>. In order to gain access to a character's Fatal Blow, a player must be at 30% health or less.</p>
+
+      <h2>Finishers</h2>
+      <p><strong>Fatalities</strong> are unique cinematic sequences where the character brutally finishes off the opponent. These are done upon successfully completing the Fatality's command and being at the specified distance if required.</p>
+
+      <p><strong>Brutalities</strong> are another type of finisher that are done by meeting certain requirements and using a specific move to defeat the opponent.</p>
+
+      <h2>Kameo Moves</h2>
+      <p>Kameo Fighters can be used during the match by performing their <strong>Kameo Moves</strong>. To do so, input the <app-input-notation input="KAMEO" size="s"></app-input-notation> button, along with a direction if the move requires it. Kameo Moves require Kameo Meter, and the Kameo Fighter must also not already be on screen.</p>
+    </div>
+
+    <!-- Page 4: Mechanics -->
+    <div class="guide-content" *ngIf="currentPage === 4">
+      <h1>Mechanics</h1>
+
+      <h2>Block</h2>
+      <p>Blocking is done by holding Left or Right on the D-pad or analog stick. There are two types of blocks: <strong>High Block</strong> (hold back) and <strong>Low Block</strong> (hold down-back). High Block blocks High and Mid attacks, while Low Block blocks all attacks including Lows. However, Low Block is vulnerable to Overhead attacks.</p>
+
+      <h2>Throw</h2>
+      <p>Throws are unblockable attacks that grab the opponent. To perform a throw, press <app-input-notation input="THROW" size="s"></app-input-notation>. Throws can be escaped by pressing <app-input-notation input="THROW" size="s"></app-input-notation> immediately after being grabbed. There are three types of throws: Forward Throw, Back Throw, and Air Throw.</p>
+
+      <h2>Fatal Blow</h2>
+      <p>The Fatal Blow is a powerful attack that can be performed once per match when at 30% health or less. Input <app-input-notation input="SS+EX" size="s"></app-input-notation> to perform it. Fatal Blows have armor, making them difficult to interrupt.</p>
+
+      <h2>Breaker</h2>
+      <p>The Breaker is a defensive mechanic that allows you to escape combos. It costs 3 bars of Super Meter and the Kameo must be available. Press <app-input-notation input="F+EX" size="s"></app-input-notation> while being hit to perform a Breaker.</p>
+
+      <h2>Kameo Assist</h2>
+      <p>Kameo Fighters can be called to assist during the match by pressing <app-input-notation input="KAMEO" size="s"></app-input-notation>. Each Kameo has unique assist moves that can help with offense, defense, or combo extensions.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div class="guide-pagination">
+      <a *ngIf="prevPage" [routerLink]="['/guides/the-match']" [queryParams]="{pg: prevPage}" class="pagination-btn">
+        &larr; {{ pages[prevPage - 1].title }}
+      </a>
+      <span *ngIf="!prevPage" class="pagination-btn disabled">&larr; Previous</span>
+
+      <div class="pagination-pages">
+        <span *ngFor="let page of pages"
+              class="pagination-page"
+              [class.active]="page.id === currentPage"
+              (click)="setPage(page.id)">
+          {{ page.id }}
+        </span>
+      </div>
+
+      <a *ngIf="nextPage" [routerLink]="['/guides/the-match']" [queryParams]="{pg: nextPage}" class="pagination-btn">
+        {{ pages[nextPage - 1].title }} &rarr;
+      </a>
+      <span *ngIf="!nextPage" class="pagination-btn disabled">Next &rarr;</span>
+    </div>
+  </div>
+</div>

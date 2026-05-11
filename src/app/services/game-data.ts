@@ -21,6 +21,7 @@ import { map, tap, shareReplay } from 'rxjs/operators';
 export interface MoveData {
   id: string;
   char_name: string;
+  kameo_name?: string;
   category: string;
   subcategory: string;
   parent_command: string;
@@ -155,6 +156,12 @@ export class GameDataService {
     );
 
     return this.kameoMoveListCache$;
+  }
+
+  // Get all moves for a specific Kameo
+  getKameoMovesForKameo(kameoName: string): MoveData[] {
+    if (!this.kameoMoveListData) return [];
+    return this.kameoMoveListData.filter(move => move.kameo_name === kameoName);
   }
 
   /*

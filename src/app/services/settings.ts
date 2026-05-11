@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsService {
-  private platform: string = 'universal';
+  private platformSubject = new BehaviorSubject<string>('universal');
   private isDarkTheme: boolean = true;
+
+  // Expose as Observable so components can subscribe
+  platform$ = this.platformSubject.asObservable();
 
   constructor() {
     this.loadSettings();
@@ -14,7 +18,7 @@ export class SettingsService {
   private loadSettings(): void {
     const savedPlatform = localStorage.getItem('KA_PLATFORM');
     if (savedPlatform) {
-      this.platform = savedPlatform;
+      this.platformSubject.next(savedPlatform);
     }
 
     const savedTheme = localStorage.getItem('KA_THEME');
@@ -24,13 +28,13 @@ export class SettingsService {
   }
 
   setPlatform(platform: string): void {
-    this.platform = platform;
+    this.platformSubject.next(platform);
     localStorage.setItem('KA_PLATFORM', platform);
     this.applyPlatform();
   }
 
   getPlatform(): string {
-    return this.platform;
+    return this.platformSubject.value;
   }
 
   toggleTheme(): void {
@@ -44,7 +48,7 @@ export class SettingsService {
   }
 
   private applyPlatform(): void {
-    document.body.setAttribute('data-platform', this.platform);
+    document.body.setAttribute('data-platform', this.platformSubject.value);
   }
 
   private applyTheme(): void {

@@ -1,0 +1,15 @@
+<div class="kameos-page">
+  <div class="page-title">KAMEOS</div>
+  <div class="page-content">
+    <div class="kameo-roster">
+      <div class="kameo-roster-row" *ngFor="let row of rosterRows">
+        <a *ngFor="let kameo of row"
+           [routerLink]="['/kameos', kameo.slug]"
+           class="kameo-roster-portrait"
+           [title]="kameo.name"
+           [style.background-image]="getPortraitBackground(kameo)">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
