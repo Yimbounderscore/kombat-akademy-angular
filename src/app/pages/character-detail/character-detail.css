@@ -207,38 +207,79 @@
 
 .subcategory-header h3 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--char-color, var(--primary-color));
-  font-size: 18px;
-  font-weight: 400;
-  padding-bottom: 8px;
 }
 
-.move-table table,
-.combo-item,
-.char-kameos,
-.gameplay-item {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+.move-item {
+  background: var(--bg-row-1);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.move-table table {
-  margin-bottom: 16px;
-}
-
-.move-table thead th,
-.move-table tbody td {
-  font-size: 13px;
-  white-space: nowrap;
+.move-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .move-name {
-  max-width: 180px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 16px;
 }
 
-.move-command {
-  font-family: monospace;
+.move-block {
   font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.move-inputs {
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.move-frames {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.move-stat {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 56px;
+  padding: 4px 8px;
+  background: var(--bg-dark);
+  border-radius: 4px;
+}
+
+.move-stat-label {
+  font-size: 10px;
+  color: rgb(128, 128, 128);
+  text-transform: uppercase;
+  margin-bottom: 1px;
+}
+
+.move-stat-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.move-notes {
+  font-size: 13px;
+  color: rgb(160, 160, 160);
+  font-style: italic;
+  margin-top: 8px;
+  line-height: 1.4;
 }
 
 .block-high { color: rgb(255, 128, 128); }
@@ -661,13 +702,6 @@
 
   .char-stats-chart {
     grid-template-columns: 96px 1fr;
-  }
-
-  .move-table table {
-    display: block;
-    font-size: 12px;
-    overflow-x: auto;
-    width: 100%;
   }
 
   .char-kameos {

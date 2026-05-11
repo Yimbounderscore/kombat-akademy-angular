@@ -137,43 +137,56 @@
       </div>
     </div>
 
-    <div class="move-table" *ngIf="!isLoadingMoves">
+    <div class="move-list" *ngIf="!isLoadingMoves">
       <div *ngFor="let sub of getMoveSubcategories()">
         <div class="subcategory-header" *ngIf="sub">
           <h3>{{ sub }}</h3>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>MOVE NAME</th>
-              <th>COMMAND</th>
-              <th>BLOCK</th>
-              <th>DAMAGE</th>
-              <th>STARTUP</th>
-              <th>ACTIVE</th>
-              <th>RECOVERY</th>
-              <th>CANCEL</th>
-              <th>HIT ADV</th>
-              <th>BLOCK ADV</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let move of getMovesBySubcategory(sub)">
-              <td class="move-name">{{ move.move_name }}</td>
-              <td class="move-command">
-                <app-input-notation [input]="move.command" size="s"></app-input-notation>
-              </td>
-              <td [ngClass]="getBlockClass(move.block_type)">{{ move.block_type }}</td>
-              <td>{{ move.hit_damage }}</td>
-              <td>{{ move.startup }}</td>
-              <td>{{ move.active }}</td>
-              <td>{{ move.recovery }}</td>
-              <td>{{ move.cancel }}</td>
-              <td>{{ move.hit_advantage }}</td>
-              <td>{{ move.block_advantage }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="move-item" *ngFor="let move of getMovesBySubcategory(sub)">
+          <div class="move-header">
+            <span class="move-name">{{ move.move_name }}</span>
+            <span class="move-block" [ngClass]="getBlockClass(move.block_type)">
+              <span *ngIf="move.block_type">{{ move.block_type }}</span>
+            </span>
+          </div>
+          <div class="move-inputs">
+            <app-input-notation [input]="move.command" size="s"></app-input-notation>
+          </div>
+          <div class="move-frames">
+            <span *ngIf="move.hit_damage && move.hit_damage !== '0.00'" class="move-stat">
+              <span class="move-stat-label">DMG</span>
+              <span class="move-stat-value">{{ move.hit_damage }}</span>
+            </span>
+            <span class="move-stat">
+              <span class="move-stat-label">STARTUP</span>
+              <span class="move-stat-value">{{ move.startup }}</span>
+            </span>
+            <span class="move-stat">
+              <span class="move-stat-label">ACTIVE</span>
+              <span class="move-stat-value">{{ move.active }}</span>
+            </span>
+            <span class="move-stat">
+              <span class="move-stat-label">RECOVERY</span>
+              <span class="move-stat-value">{{ move.recovery }}</span>
+            </span>
+            <span class="move-stat">
+              <span class="move-stat-label">CANCEL</span>
+              <span class="move-stat-value">{{ move.cancel }}</span>
+            </span>
+            <span class="move-stat">
+              <span class="move-stat-label">HIT ADV</span>
+              <span class="move-stat-value">{{ move.hit_advantage }}</span>
+            </span>
+            <span class="move-stat">
+              <span class="move-stat-label">BLOCK ADV</span>
+              <span class="move-stat-value">{{ move.block_advantage }}</span>
+            </span>
+          </div>
+          <div class="move-notes" *ngIf="move.properties || move.notes">
+            <span *ngIf="move.properties">{{ move.properties }}</span>
+            <span *ngIf="move.notes && move.notes !== move.properties"><br>{{ move.notes }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
