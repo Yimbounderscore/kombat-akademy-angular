@@ -206,10 +206,25 @@
   </section>
 
   <!-- STRATEGY SECTION -->
-  <section id="strategy" class="char-section">
+  <section id="strategy" class="char-section" *ngIf="strategyData">
     <h1>STRATEGY</h1>
     <div class="strategy-content">
-      <p>Strategy content for {{ character.name }} is still being developed. Check back soon for in-depth guides on how to play {{ character.name }} effectively, including optimal neutral game, pressure strings, and matchup tips.</p>
+      <p>{{ strategyData.overview }}</p>
+
+      <div class="strategy-lists" *ngIf="strategyData.strengths.length > 0 || strategyData.weaknesses.length > 0">
+        <div class="strategy-col" *ngIf="strategyData.strengths.length > 0">
+          <h2>Strengths</h2>
+          <ul>
+            <li *ngFor="let s of strategyData.strengths">{{ s }}</li>
+          </ul>
+        </div>
+        <div class="strategy-col" *ngIf="strategyData.weaknesses.length > 0">
+          <h2>Weaknesses</h2>
+          <ul>
+            <li *ngFor="let w of strategyData.weaknesses">{{ w }}</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 

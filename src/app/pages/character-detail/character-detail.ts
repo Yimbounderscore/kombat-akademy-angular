@@ -13,6 +13,7 @@ import { NgFor, NgIf, NgClass } from '@angular/common';
 import { CHARACTERS, CHARACTER_LIST, Character } from '../../data/characters';
 import { KAMEOS } from '../../data/kameos';
 import { TEAMS } from '../../data/teams';
+import { STRATEGY } from '../../data/strategy';
 import { GameDataService, MoveData, ComboData } from '../../services/game-data';
 import { InputNotationComponent } from '../../components/input-notation/input-notation';
 
@@ -31,6 +32,11 @@ interface GameplayVideo {
 })
 export class CharacterDetail implements OnInit {
   character: Character | null = null;
+
+  get strategyData() {
+    if (!this.character) return null;
+    return STRATEGY[this.character.name] || null;
+  }
 
   moves: MoveData[] = [];
   filteredMoves: MoveData[] = [];

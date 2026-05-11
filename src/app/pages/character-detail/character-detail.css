@@ -317,6 +317,43 @@
   padding: 16px;
 }
 
+.strategy-content p {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.strategy-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.strategy-col h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--char-color, var(--primary-color));
+  margin-bottom: 8px;
+}
+
+.strategy-col ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.strategy-col li {
+  font-size: 15px;
+  line-height: 22px;
+  margin-bottom: 4px;
+}
+
+@media screen and (max-width: 1024px) {
+  .strategy-lists {
+    grid-template-columns: 1fr;
+  }
+}
+
 .char-kameos {
   display: flex;
   flex-wrap: wrap;
