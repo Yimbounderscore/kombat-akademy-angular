@@ -1,0 +1,213 @@
+<!--
+  CHARACTER DETAIL PAGE
+
+  This page shows everything about a single character:
+  1. Character image + basic info (name, type, health)
+  2. Stats bars (Offense, Defense, Damage, Mobility, Range, Zoning)
+  3. Pros and Cons lists
+  4. Move list table (with tabs for Basic/Special/Finishers)
+  5. Combos list (with tabs for Midscreen/Corner)
+
+  The *ngIf="character" check means "only show this if we found the character".
+  This prevents errors if someone types a bad URL.
+-->
+<div class="character-detail-page" *ngIf="character">
+
+  <!-- CHARACTER HEADER: Image + Info -->
+  <div class="character-header">
+    <!-- Left side: Large character render image -->
+    <div class="character-image">
+      <img [src]="'/assets/images/characters/renders/' + character.slug + '.png'"
+           [alt]="character.name">
+    </div>
+
+    <!-- Right side: Name, type, health, description -->
+    <div class="character-info">
+      <h1 class="character-name">{{ character.name }}</h1>
+      <div class="character-type" [style.color]="character.color">{{ character.type }}</div>
+      <div class="character-health">Health: {{ character.health }}</div>
+      <p class="character-description" *ngIf="character.description">{{ character.description }}</p>
+
+      <!-- Stats Bars -->
+      <div class="character-stats">
+        <div class="stat-row">
+          <span class="stat-label">OFFENSE</span>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" [style.width.%]="getStatWidth(character.stats.offense)" [style.background-color]="character.color"></div>
+          </div>
+          <span class="stat-value">{{ character.stats.offense }}/5</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">DEFENSE</span>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" [style.width.%]="getStatWidth(character.stats.defense)" [style.background-color]="character.color"></div>
+          </div>
+          <span class="stat-value">{{ character.stats.defense }}/5</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">DAMAGE</span>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" [style.width.%]="getStatWidth(character.stats.damage)" [style.background-color]="character.color"></div>
+          </div>
+          <span class="stat-value">{{ character.stats.damage }}/5</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">MOBILITY</span>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" [style.width.%]="getStatWidth(character.stats.mobility)" [style.background-color]="character.color"></div>
+          </div>
+          <span class="stat-value">{{ character.stats.mobility }}/5</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">RANGE</span>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" [style.width.%]="getStatWidth(character.stats.range)" [style.background-color]="character.color"></div>
+          </div>
+          <span class="stat-value">{{ character.stats.range }}/5</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ZONING</span>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" [style.width.%]="getStatWidth(character.stats.zoning)" [style.background-color]="character.color"></div>
+          </div>
+          <span class="stat-value">{{ character.stats.zoning }}/5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROS AND CONS -->
+  <div class="pros-cons" *ngIf="character.pros.length > 0 || character.cons.length > 0">
+    <div class="pros" *ngIf="character.pros.length > 0">
+      <div class="pros-cons-title">Pros</div>
+      <ul>
+        <li *ngFor="let pro of character.pros">{{ pro }}</li>
+      </ul>
+    </div>
+    <div class="cons" *ngIf="character.cons.length > 0">
+      <div class="pros-cons-title">Cons</div>
+      <ul>
+        <li *ngFor="let con of character.cons">{{ con }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="quick-links">
+    <a routerLink="/move-list" [queryParams]="{character: character.name}">View Full Move List</a>
+    <a routerLink="/combos" [queryParams]="{character: character.name}">View All Combos</a>
+  </div>
+
+  <!-- MOVE LIST SECTION -->
+  <div class="section-header">
+    <h2>MOVE LIST</h2>
+  </div>
+
+  <!-- Move list loading indicator -->
+  <div class="loading" *ngIf="isLoadingMoves">Loading moves...</div>
+
+  <!-- Move list tabs -->
+  <div class="tabs" *ngIf="!isLoadingMoves">
+    <div *ngFor="let tab of moveTabs"
+         class="tab"
+         [class.active]="activeMoveTab === tab.id"
+         (click)="setActiveMoveTab(tab.id)">
+      {{ tab.name }}
+    </div>
+  </div>
+
+  <!-- Move list table -->
+  <div class="move-table" *ngIf="!isLoadingMoves">
+    <div *ngFor="let sub of getMoveSubcategories()">
+      <div class="subcategory-header" *ngIf="sub">
+        <h3>{{ sub }}</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>MOVE NAME</th>
+            <th>COMMAND</th>
+            <th>BLOCK</th>
+            <th>DAMAGE</th>
+            <th>STARTUP</th>
+            <th>ACTIVE</th>
+            <th>RECOVERY</th>
+            <th>CANCEL</th>
+            <th>HIT ADV</th>
+            <th>BLOCK ADV</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let move of getMovesBySubcategory(sub)">
+            <td class="move-name">{{ move.move_name }}</td>
+            <td class="move-command">{{ move.command }}</td>
+            <td [ngClass]="getBlockClass(move.block_type)">{{ move.block_type }}</td>
+            <td>{{ move.hit_damage }}</td>
+            <td>{{ move.startup }}</td>
+            <td>{{ move.active }}</td>
+            <td>{{ move.recovery }}</td>
+            <td>{{ move.cancel }}</td>
+            <td>{{ move.hit_advantage }}</td>
+            <td>{{ move.block_advantage }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- COMBOS SECTION -->
+  <div class="section-header">
+    <h2>COMBOS</h2>
+  </div>
+
+  <!-- Combos loading indicator -->
+  <div class="loading" *ngIf="isLoadingCombos">Loading combos...</div>
+
+  <!-- Combo tabs -->
+  <div class="tabs" *ngIf="!isLoadingCombos">
+    <div *ngFor="let tab of comboTabs"
+         class="tab"
+         [class.active]="activeComboTab === tab.id"
+         (click)="setActiveComboTab(tab.id)">
+      {{ tab.name }}
+    </div>
+  </div>
+
+  <!-- Combo list -->
+  <div class="combo-list" *ngIf="!isLoadingCombos">
+    <div *ngFor="let sub of getComboSubcategories()">
+      <div class="subcategory-header" *ngIf="sub">
+        <h3>{{ sub }}</h3>
+      </div>
+      <div class="combo-item" *ngFor="let combo of getCombosBySubcategory(sub)">
+        <div class="combo-header">
+          <span class="combo-difficulty" [ngClass]="getDifficultyClass(combo.difficulty)">
+            {{ combo.difficulty }}
+          </span>
+          <span class="combo-damage">{{ combo.damage }}</span>
+          <span class="combo-meter" *ngIf="combo.meter !== '0'">Meter: {{ combo.meter }}</span>
+          <span class="combo-kameo" *ngIf="combo.kameo_name">Kameo: {{ combo.kameo_name }}</span>
+        </div>
+        <div class="combo-inputs">{{ combo.combo }}</div>
+        <div class="combo-notes" *ngIf="combo.notes">
+          <i class="fa-solid fa-circle-info"></i> {{ combo.notes }}
+        </div>
+        <div class="combo-video" *ngIf="combo.url">
+          <a [href]="combo.url" target="_blank" rel="noopener">
+            <i class="fa-solid fa-video"></i> Watch Video
+          </a>
+        </div>
+      </div>
+      <div class="empty-state" *ngIf="filteredCombos.length === 0">
+        <p>No combos found for this category.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOT FOUND: If the character slug doesn't match any character -->
+<div class="not-found" *ngIf="!character && !isLoadingMoves">
+  <h2>Character Not Found</h2>
+  <p>The character you're looking for doesn't exist.</p>
+  <a routerLink="/characters">Back to Characters</a>
+</div>

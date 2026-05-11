@@ -1,0 +1,85 @@
+<!--
+  MOVE LIST PAGE
+  
+  Shows frame data for all moves of a selected character.
+  Structure:
+  1. Character selector dropdown
+  2. Category tabs (Basic Attacks, Special Moves, Finishers)
+  3. Table of moves with frame data columns
+-->
+<div class="move-list-page">
+  <div class="page-title">MOVE LIST</div>
+  <div class="page-content">
+    <!-- Character Selector -->
+    <div class="move-list-select">
+      <div class="select-group">
+        <label>Character</label>
+        <select (change)="onCharacterChange($event)" [ngModel]="selectedCharacter">
+          <option value="">Select Character</option>
+          <option *ngFor="let char of characters" [value]="char">{{ char }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div class="loading" *ngIf="isLoading">
+      <p>Loading move data...</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="move-list-tabs" *ngIf="selectedCharacter && !isLoading">
+      <div *ngFor="let tab of tabs"
+           class="tab"
+           [class.active]="activeTab === tab.id"
+           (click)="setActiveTab(tab.id)">
+        {{ tab.name }}
+      </div>
+    </div>
+
+    <!-- Move Data Table -->
+    <div class="move-list-table" *ngIf="selectedCharacter && !isLoading">
+      <div *ngFor="let subcategory of getSubcategories()">
+        <div class="subcategory-header" *ngIf="subcategory">
+          <h3>{{ subcategory }}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>MOVE NAME</th>
+              <th>COMMAND</th>
+              <th>BLOCK</th>
+              <th>DAMAGE</th>
+              <th>STARTUP</th>
+              <th>ACTIVE</th>
+              <th>RECOVERY</th>
+              <th>CANCEL</th>
+              <th>HIT ADV</th>
+              <th>BLOCK ADV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let move of getMovesBySubcategory(subcategory)">
+              <td class="move-name">{{ move.move_name }}</td>
+              <td class="move-command">{{ move.command }}</td>
+              <td class="move-block" [ngClass]="getBlockClass(move.block_type)">
+                <span *ngIf="move.block_type">{{ move.block_type }}</span>
+              </td>
+              <td>{{ move.hit_damage }}</td>
+              <td>{{ move.startup }}</td>
+              <td>{{ move.active }}</td>
+              <td>{{ move.recovery }}</td>
+              <td>{{ move.cancel }}</td>
+              <td>{{ move.hit_advantage }}</td>
+              <td>{{ move.block_advantage }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="!selectedCharacter && !isLoading">
+      <p>Select a character from the dropdown above to view their move list.</p>
+    </div>
+  </div>
+</div>

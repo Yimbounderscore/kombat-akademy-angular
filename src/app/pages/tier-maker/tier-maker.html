@@ -1,0 +1,58 @@
+<!--
+  TIER MAKER PAGE
+  
+  Allows users to create tier lists by dragging characters into tiers.
+  Structure:
+  1. Tier list header with title/author
+  2. Tier rows (S/A/B/C/D) with colored backgrounds
+  3. Character pool at the bottom
+-->
+<div class="tier-maker-page">
+  <div class="page-title">TIER MAKER</div>
+  <div class="page-content">
+    <!-- Tier List -->
+    <div class="tier-list">
+      <!-- Header -->
+      <div class="tier-list-header">
+        <div class="tier-list-title">{{ title }}</div>
+        <div class="tier-list-info">
+          <span *ngIf="author">{{ author }}</span>
+          <span>{{ currentDate }}</span>
+        </div>
+      </div>
+
+      <!-- Tier Rows -->
+      <div class="tier-row" *ngFor="let tier of tiers; let i = index"
+           [style.background-color]="tier.color + '33'">
+        <div class="tier-label" [style.background-color]="tier.color">
+          <span>{{ tier.name }}</span>
+        </div>
+        <div class="tier-characters">
+          <div class="tier-character" *ngFor="let slug of tier.characters"
+               [style.background-image]="'url(/assets/images/characters/portraits/' + slug + '.jpg)'"
+               [title]="getCharName(slug)"
+               (click)="removeFromTier(i, slug)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Pool -->
+    <div class="tier-pool">
+      <div class="pool-header">CHARACTERS</div>
+      <div class="pool-characters">
+        <div class="pool-character"
+             *ngFor="let slug of pool"
+             [style.background-image]="'url(/assets/images/characters/portraits/' + slug + '.jpg)'"
+             [title]="getCharName(slug)"
+             (click)="addToTier(0, slug)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="tier-actions">
+      <button (click)="reset()">Reset All</button>
+    </div>
+  </div>
+</div>

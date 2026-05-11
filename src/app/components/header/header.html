@@ -1,0 +1,127 @@
+<!-- 
+  HEADER COMPONENT
+  This is the "front door" of our website. It appears on every page.
+  
+  Structure:
+  1. site-header-top: The thin top bar with controls
+  2. site-header-main: The big banner area with logo
+  3. site-header-nav: The navigation menu bar
+-->
+
+<!-- TOP BAR: Contains Donate, Platform Selector, Theme Toggle -->
+<div class="site-header-top">
+  <div class="site-header-top-inner">
+    <!-- Left side: Donate button -->
+    <div class="site-header-top-left">
+      <a routerLink="/donate" class="donate-btn">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>Donate</span>
+      </a>
+    </div>
+    <!-- Right side: Platform selector + Theme toggle -->
+    <div class="site-header-top-right">
+      <div class="platform-selector">
+        <i class="fa-solid fa-gamepad"></i>
+        <select (change)="selectPlatform($event)">
+          <option value="" disabled selected hidden>Select Platform</option>
+          <option value="universal">Universal</option>
+          <option value="playstation">PlayStation</option>
+          <option value="xbox">Xbox</option>
+          <option value="switch">Nintendo Switch</option>
+          <option value="plain-text">Plain Text</option>
+        </select>
+      </div>
+      <div class="theme-selector" (click)="toggleTheme()">
+        <i class="fa-solid fa-moon"></i>
+        <div class="theme-btn">
+          <div class="theme-btn-switch"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN HEADER: Banner image + Logo -->
+<div class="site-header-main">
+  <a routerLink="/" class="logo-link">
+    <img src="/assets/images/site/logo.png" alt="Kombat Akademy" class="site-logo">
+  </a>
+</div>
+
+<!-- NAVIGATION BAR: Horizontal menu with icons -->
+<div class="site-header-nav">
+  <div class="site-header-nav-inner">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+      <i class="fa-solid fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a routerLink="/characters" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-users"></i>
+      <span>Characters</span>
+    </a>
+    <a routerLink="/kameos" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-id-card"></i>
+      <span>Kameos</span>
+    </a>
+    <a routerLink="/move-list" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-list"></i>
+      <span>Move List</span>
+    </a>
+    <a routerLink="/combos" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-fire"></i>
+      <span>Combos</span>
+    </a>
+    <a routerLink="/gameplay" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Gameplay</span>
+    </a>
+    <a routerLink="/tier-maker" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-ranking-star"></i>
+      <span>Tier Maker</span>
+    </a>
+    <a routerLink="/teams" routerLinkActive="active" class="nav-item">
+      <i class="fa-solid fa-people-group"></i>
+      <span>Teams</span>
+    </a>
+  </div>
+</div>
+
+<!-- MOBILE MENU TOGGLE (hidden on desktop) -->
+<div class="mobile-menu-toggle" (click)="toggleMenu()">
+  <i class="fa-solid" [ngClass]="menuOpen ? 'fa-times' : 'fa-bars'"></i>
+</div>
+
+<!-- MOBILE MENU (slides in from the side) -->
+<div class="mobile-menu" [class.open]="menuOpen">
+  <div class="mobile-menu-header">
+    <span>MAIN MENU</span>
+    <i class="fa-solid fa-times" (click)="closeMenu()"></i>
+  </div>
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
+    <i class="fa-solid fa-home"></i> Home
+  </a>
+  <a routerLink="/characters" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-users"></i> Characters
+  </a>
+  <a routerLink="/kameos" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-id-card"></i> Kameos
+  </a>
+  <a routerLink="/move-list" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-list"></i> Move List
+  </a>
+  <a routerLink="/combos" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-fire"></i> Combos
+  </a>
+  <a routerLink="/gameplay" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-gamepad"></i> Gameplay
+  </a>
+  <a routerLink="/tier-maker" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-ranking-star"></i> Tier Maker
+  </a>
+  <a routerLink="/teams" routerLinkActive="active" (click)="closeMenu()">
+    <i class="fa-solid fa-people-group"></i> Teams
+  </a>
+</div>
+
+<!-- OVERLAY: Darkens the background when mobile menu is open -->
+<div class="mobile-menu-overlay" [class.visible]="menuOpen" (click)="closeMenu()"></div>

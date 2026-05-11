@@ -1,0 +1,62 @@
+/*
+ * CHARACTERS PAGE CSS
+ * 
+ * The characters page shows a grid of portraits.
+ * Original design: Two rows of small square portraits.
+ */
+.characters-page {
+  padding: 0;
+}
+
+.character-roster {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.character-roster-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.character-portrait {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.25s;
+  display: block;
+  text-decoration: none;
+}
+
+.character-portrait:hover {
+  filter: brightness(125%);
+}
+
+.character-portrait.empty {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.character-portrait.empty:hover {
+  filter: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .character-portrait {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .character-portrait {
+    width: 48px;
+    height: 48px;
+  }
+}

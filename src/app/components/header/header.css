@@ -1,0 +1,326 @@
+/*
+ * HEADER CSS
+ * 
+ * The header is made of 3 visual layers:
+ * 1. Top bar (thin, dark) - Contains controls
+ * 2. Main area (banner image) - Shows logo
+ * 3. Navigation bar (gradient) - Horizontal menu
+ */
+
+/* === TOP BAR === */
+/* This is the thin dark bar at the very top */
+.site-header-top {
+  background-color: rgb(16, 16, 16);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+  position: relative;
+  z-index: 100;
+}
+
+.site-header-top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  min-height: 32px;
+}
+
+.site-header-top-left,
+.site-header-top-right {
+  display: flex;
+  align-items: center;
+}
+
+.site-header-top-right {
+  margin-left: auto;
+  gap: 16px;
+}
+
+/* Donate button styling */
+.donate-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+  color: var(--color);
+  transition: color 0.25s;
+}
+
+.donate-btn:hover {
+  color: #fff;
+}
+
+/* Platform selector - the dropdown for choosing PlayStation/Xbox/etc */
+.platform-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.platform-selector > i {
+  color: var(--color);
+  font-size: 20px;
+}
+
+.platform-selector select {
+  width: 160px;
+  height: 28px;
+}
+
+/* Theme toggle - the moon/sun switch */
+.theme-selector {
+  display: flex;
+  align-items: center;
+  color: var(--color);
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.theme-selector:hover {
+  color: #fff;
+}
+
+.theme-btn {
+  background-color: rgb(0, 96, 192);
+  border: 2px solid transparent;
+  border-radius: 128px;
+  height: 24px;
+  width: 48px;
+  margin-left: 8px;
+  position: relative;
+}
+
+.theme-btn-switch {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  transition: left 0.25s;
+}
+
+/* When light theme is active, move switch to the left */
+body.light-theme .theme-btn {
+  background-color: rgb(128, 128, 128);
+}
+
+body.light-theme .theme-btn-switch {
+  left: 22%;
+}
+
+body.light-theme .theme-selector {
+  color: rgb(32, 32, 32);
+}
+
+/* === MAIN HEADER === */
+/* This is the large banner area with the logo */
+.site-header-main {
+  background-color: rgb(24, 24, 24);
+  background-image: url('/assets/images/site/banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 32px;
+  min-height: 100px;
+  position: relative;
+}
+
+.logo-link {
+  display: block;
+}
+
+.site-logo {
+  height: 58px;
+  width: auto;
+}
+
+/* === NAVIGATION BAR === */
+/* This is the horizontal menu with icons, has a gradient background */
+.site-header-nav {
+  background: linear-gradient(rgb(64, 68, 72), rgb(32, 36, 40));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 99;
+}
+
+.site-header-nav-inner {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 48px;
+  color: rgb(192, 192, 192);
+  font-size: 16px;
+  font-weight: 200;
+  text-shadow: 1px 1px 2px #000;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-item.active {
+  color: #fff;
+}
+
+.nav-item i {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+}
+
+/* === MOBILE MENU === */
+/* Hidden by default, slides in on mobile */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background: rgb(16, 16, 16);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  background: rgb(16, 16, 16);
+  z-index: 10000;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.mobile-menu-header i {
+  cursor: pointer;
+}
+
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  color: rgb(192, 192, 192);
+  font-size: 20px;
+  font-weight: 200;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.mobile-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.mobile-menu a.active {
+  color: #fff;
+}
+
+.mobile-menu a i {
+  width: 24px;
+  text-align: center;
+}
+
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.mobile-menu-overlay.visible {
+  opacity: 1;
+}
+
+/* === RESPONSIVE === */
+/* On smaller screens, hide desktop nav and show mobile menu button */
+@media screen and (max-width: 1024px) {
+  .site-header-top-left {
+    display: none;
+  }
+
+  .site-header-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+  }
+
+  .site-header-main {
+    min-height: 60px;
+    padding: 12px 16px;
+  }
+
+  .site-logo {
+    height: 40px;
+  }
+
+  .site-header-top-inner {
+    padding: 0 16px;
+  }
+
+  .platform-selector select {
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .site-logo {
+    height: 30px;
+  }
+}

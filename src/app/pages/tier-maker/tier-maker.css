@@ -1,0 +1,143 @@
+/*
+ * TIER MAKER PAGE CSS
+ * 
+ * Shows tier rows with colored backgrounds and a character pool.
+ * Original design: Full-width rows, square character portraits.
+ */
+.tier-maker-page {
+  padding: 0;
+}
+
+/* Tier list container */
+.tier-list {
+  background: var(--bg-dark);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+/* Tier list header */
+.tier-list-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tier-list-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tier-list-info {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: rgb(128, 128, 128);
+}
+
+/* Tier rows */
+.tier-row {
+  display: flex;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.tier-row:last-child {
+  border-bottom: none;
+}
+
+.tier-label {
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.tier-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  flex: 1;
+  align-items: center;
+}
+
+.tier-character {
+  width: 56px;
+  height: 56px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.25s;
+}
+
+.tier-character:hover {
+  filter: brightness(125%);
+}
+
+/* Character pool */
+.tier-pool {
+  background: var(--bg-dark);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  padding: 16px;
+}
+
+.pool-header {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+}
+
+.pool-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pool-character {
+  width: 56px;
+  height: 56px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.25s;
+}
+
+.pool-character:hover {
+  filter: brightness(125%);
+}
+
+/* Actions */
+.tier-actions {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.tier-actions button {
+  padding: 8px 24px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .tier-character,
+  .pool-character {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tier-label {
+    width: 48px;
+    font-size: 18px;
+  }
+}

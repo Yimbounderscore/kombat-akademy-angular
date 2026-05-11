@@ -1,0 +1,85 @@
+<!--
+  COMBOS PAGE
+  
+  Shows combo lists for a selected character.
+  Structure:
+  1. Character + Kameo selectors
+  2. Category tabs (Midscreen / Corner)
+  3. Combo cards grouped by starter move
+-->
+<div class="combos-page">
+  <div class="page-title">
+    COMBOS
+    <span *ngIf="selectedCharacter"> - {{ selectedCharacter }}</span>
+  </div>
+  <div class="page-content">
+    <!-- Selectors -->
+    <div class="combos-select">
+      <div class="select-group">
+        <label>Character</label>
+        <select (change)="onCharacterChange($event)" [ngModel]="selectedCharacter">
+          <option value="">Select Character</option>
+          <option *ngFor="let char of characters" [value]="char">{{ char }}</option>
+        </select>
+      </div>
+      <div class="select-group">
+        <label>Kameo</label>
+        <select (change)="onKameoChange($event)" [ngModel]="selectedKameo">
+          <option value="">None</option>
+          <option *ngFor="let kameo of kameos" [value]="kameo">{{ kameo }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" *ngIf="isLoading">
+      <p>Loading combo data...</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="combos-tabs" *ngIf="selectedCharacter && !isLoading">
+      <div *ngFor="let tab of tabs"
+           class="tab"
+           [class.active]="activeTab === tab.id"
+           (click)="setActiveTab(tab.id)">
+        {{ tab.name }}
+      </div>
+    </div>
+
+    <!-- Combo List -->
+    <div class="combos-content" *ngIf="selectedCharacter && !isLoading">
+      <div *ngFor="let subcategory of getSubcategories()">
+        <div class="subcategory-header" *ngIf="subcategory">
+          <h3>{{ subcategory }}</h3>
+        </div>
+        <div class="combo-item" *ngFor="let combo of getCombosBySubcategory(subcategory)">
+          <div class="combo-header">
+            <span class="combo-difficulty" [ngClass]="getDifficultyClass(combo.difficulty)">
+              {{ combo.difficulty }}
+            </span>
+            <span class="combo-damage">{{ combo.damage }}</span>
+            <span class="combo-meter" *ngIf="combo.meter !== '0'">Meter: {{ combo.meter }}</span>
+            <span class="combo-kameo" *ngIf="combo.kameo_name">Kameo: {{ combo.kameo_name }}</span>
+          </div>
+          <div class="combo-inputs">{{ combo.combo }}</div>
+          <div class="combo-notes" *ngIf="combo.notes">
+            <i class="fa-solid fa-circle-info"></i> {{ combo.notes }}
+          </div>
+          <div class="combo-video" *ngIf="combo.url">
+            <a [href]="combo.url" target="_blank" rel="noopener">
+              <i class="fa-solid fa-video"></i> Watch Video
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="empty-state" *ngIf="filteredCombos.length === 0">
+        <p>No combos found for the selected criteria.</p>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="!selectedCharacter && !isLoading">
+      <p>Select a character from the dropdown above to view their combos.</p>
+    </div>
+  </div>
+</div>

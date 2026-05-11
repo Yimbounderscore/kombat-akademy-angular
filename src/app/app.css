@@ -1,0 +1,21 @@
+/*
+ * APP COMPONENT CSS
+ * 
+ * This controls the overall page layout.
+ * The site-content area holds all page content between header and footer.
+ */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.site-content {
+  padding: 16px 32px;
+}
+
+/* On mobile, reduce padding */
+@media screen and (max-width: 1024px) {
+  .site-content {
+    padding: 16px;
+  }
+}

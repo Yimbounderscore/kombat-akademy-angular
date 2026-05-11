@@ -1,0 +1,174 @@
+/*
+ * COMBOS PAGE CSS
+ * 
+ * Shows combo lists with difficulty colors.
+ * Original design: Cards with colored difficulty badges.
+ */
+.combos-page {
+  padding: 0;
+}
+
+/* Selectors */
+.combos-select {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.select-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select-group label {
+  font-size: 16px;
+  color: var(--color);
+}
+
+.select-group select {
+  min-width: 180px;
+}
+
+/* Tabs */
+.combos-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 8px;
+}
+
+.tab {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: rgb(192, 192, 192);
+  font-size: 16px;
+  font-weight: 200;
+  transition: color 0.25s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  color: #fff;
+}
+
+.tab.active {
+  color: #fff;
+  border-bottom-color: var(--primary-color);
+}
+
+/* Subcategory header */
+.subcategory-header {
+  margin: 24px 0 8px 0;
+}
+
+.subcategory-header h3 {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--primary-color);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Combo item card */
+.combo-item {
+  background: var(--bg-row-1);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.combo-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+/* Difficulty badges with colors */
+.combo-difficulty {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.diff-easy {
+  background: rgb(48, 128, 48);
+  color: #fff;
+}
+
+.diff-medium {
+  background: rgb(192, 128, 0);
+  color: #fff;
+}
+
+.diff-hard {
+  background: rgb(192, 48, 48);
+  color: #fff;
+}
+
+.combo-damage {
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
+.combo-meter,
+.combo-kameo {
+  color: rgb(128, 128, 128);
+  font-size: 13px;
+}
+
+.combo-inputs {
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.combo-notes {
+  font-size: 13px;
+  color: rgb(128, 128, 128);
+  font-style: italic;
+}
+
+.combo-notes i {
+  margin-right: 4px;
+}
+
+.combo-video a {
+  font-size: 13px;
+}
+
+.combo-video a i {
+  margin-right: 4px;
+}
+
+/* Loading and empty states */
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 48px;
+  color: rgb(128, 128, 128);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .combos-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}

@@ -1,0 +1,32 @@
+/*
+  CHARACTERS PAGE
+
+  The characters page shows a grid of character portraits.
+  Each portrait links to the character's detail page.
+  Empty slots show a dark placeholder image.
+*/
+<div class="characters-page">
+  <div class="page-title">CHARACTERS</div>
+  <div class="page-content">
+    <div class="character-roster">
+      <!-- Each row is a flex container of character portraits -->
+      <div class="character-roster-row" *ngFor="let row of characterRows">
+        <!-- For each character in the row, show their portrait -->
+        <ng-container *ngFor="let character of row">
+          <!-- If character exists, show portrait with link -->
+          <a *ngIf="character" 
+             [routerLink]="['/character', character.slug]" 
+             class="character-portrait"
+             [style.background-image]="'url(/assets/images/characters/portraits/' + character.slug + '.jpg)'"
+             [title]="character.name">
+          </a>
+          <!-- If no character (empty slot), show empty placeholder -->
+          <div *ngIf="!character" 
+               class="character-portrait empty"
+               style="background-image: url('/assets/images/characters/portraits/empty.jpg')">
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+/*
+ * MOVE LIST PAGE CSS
+ * 
+ * Shows frame data in a table format.
+ * Original design: Dark table with alternating row colors,
+ * category tabs, and character selector.
+ */
+.move-list-page {
+  padding: 0;
+}
+
+/* Character selector */
+.move-list-select {
+  margin-bottom: 16px;
+}
+
+.select-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select-group label {
+  font-size: 16px;
+  color: var(--color);
+}
+
+.select-group select {
+  min-width: 200px;
+}
+
+/* Category tabs */
+.move-list-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 8px;
+}
+
+.tab {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: rgb(192, 192, 192);
+  font-size: 16px;
+  font-weight: 200;
+  transition: color 0.25s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  color: #fff;
+}
+
+.tab.active {
+  color: #fff;
+  border-bottom-color: var(--primary-color);
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 48px;
+  color: rgb(128, 128, 128);
+}
+
+/* Subcategory header */
+.subcategory-header {
+  margin: 24px 0 8px 0;
+}
+
+.subcategory-header h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--primary-color);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Table styling */
+.move-list-table table {
+  margin-bottom: 16px;
+}
+
+.move-list-table thead th {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.move-list-table tbody td {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.move-name {
+  font-weight: 400;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.move-command {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Block type color coding */
+.block-high { color: rgb(255, 128, 128); }
+.block-mid { color: rgb(255, 224, 128); }
+.block-low { color: rgb(128, 192, 255); }
+.block-overhead { color: rgb(255, 128, 255); }
+.block-throw { color: rgb(128, 255, 128); }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 48px;
+  color: rgb(128, 128, 128);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .move-list-table table {
+    font-size: 13px;
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .move-list-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}

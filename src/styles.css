@@ -1,1 +1,189 @@
-/* You can add global styles to this file, and also import other style files */
+/* Root Variables */
+:root {
+  --default-font: 'Arial', 'Times New Roman', 'serif';
+  --primary-color: rgb(192, 224, 255);
+  --color: rgb(224, 224, 224);
+  --bg: rgb(24, 28, 32);
+  --bg-dark: rgb(16, 16, 16);
+  --bg-row-1: rgb(32, 36, 40);
+  --bg-row-2: rgb(24, 24, 24);
+  --border: rgb(32, 32, 32);
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--default-font);
+  background-color: var(--bg);
+  color: var(--color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+a, a:focus {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+form {
+  margin: 0;
+}
+
+select {
+  background: var(--bg-dark);
+  border: 1px solid transparent;
+  color: var(--color);
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 6px 32px 6px 8px;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23808080' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+select:hover {
+  border-color: rgb(64, 64, 64);
+}
+
+select option {
+  background: var(--bg-dark);
+  color: var(--color);
+}
+
+input[type="text"], input[type="email"], input[type="number"] {
+  background: var(--bg-dark);
+  border: 1px solid rgb(64, 64, 64);
+  color: var(--color);
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+input[type="submit"], button {
+  background: var(--bg-row-1);
+  border: 1px solid rgb(64, 64, 64);
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+  filter: brightness(125%);
+}
+
+/* Site Content */
+.site-content {
+  min-height: calc(100vh - 215px - 120px);
+}
+
+/* Page Title / Content */
+.page-title {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.page-content {
+  padding: 16px 0;
+}
+
+/* Guide Table */
+.guide table,
+.table-container table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.guide table thead,
+.table-container table thead {
+  background-color: var(--bg-dark);
+}
+
+.guide table thead th,
+.table-container table thead th {
+  font-weight: 400;
+  padding: 8px;
+  text-align: center;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.guide table tbody td,
+.table-container table tbody td {
+  padding: 8px;
+  vertical-align: middle;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.guide table tbody tr:nth-child(2n) td,
+.table-container table tbody tr:nth-child(2n) td {
+  background-color: var(--bg-row-2);
+}
+
+.guide table tbody tr:nth-child(2n+1) td,
+.table-container table tbody tr:nth-child(2n+1) td {
+  background-color: var(--bg-row-1);
+}
+
+.guide table.frame-data tbody tr td {
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.guide table.frame-data tbody td:not(:first-child) {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile */
+@media screen and (max-width: 1024px) {
+  .site-content {
+    min-height: calc(100vh - 135px - 120px);
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+}

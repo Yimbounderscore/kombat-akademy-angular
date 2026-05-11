@@ -1,0 +1,40 @@
+/*
+ * FOOTER CSS
+ * 
+ * The footer is a simple dark bar at the bottom of the page.
+ * Original colors: background rgb(16, 16, 16), links match default link color.
+ */
+.footer {
+  background: rgb(16, 16, 16);
+  padding: 24px 32px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.footer-links a {
+  color: var(--primary-color);
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.copyright {
+  font-size: 14px;
+  color: var(--color);
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 1024px) {
+  .copyright {
+    font-size: 12px;
+  }
+}
