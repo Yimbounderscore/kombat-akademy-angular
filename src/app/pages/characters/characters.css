@@ -38,15 +38,6 @@
   filter: brightness(125%);
 }
 
-.character-portrait.empty {
-  opacity: 0.4;
-  cursor: default;
-}
-
-.character-portrait.empty:hover {
-  filter: none;
-}
-
 @media screen and (max-width: 1024px) {
   .character-portrait {
     width: 60px;
