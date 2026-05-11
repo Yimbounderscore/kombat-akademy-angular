@@ -27,7 +27,7 @@ interface InputPart {
           <path *ngIf="part.id === 'back'" d="M 100 32 L 100 12 L 30 64 L 100 116 L 100 96 L 128 96 L 128 32 Z" fill="currentColor"/>
           <path *ngIf="part.id === 'up'" d="M 64 0 L 128 60 L 96 60 L 96 128 L 32 128 L 32 60 L 0 60 Z" fill="currentColor"/>
           <path *ngIf="part.id === 'down'" d="M 64 128 L 0 68 L 32 68 L 32 0 L 96 0 L 96 68 L 128 68 Z" fill="currentColor"/>
-          <path *ngIf="part.id === 'forward'" d="M 28 32 L 28 12 L 0 12 L 0 96 L 28 96 L 28 116 L 98 64 Z" fill="currentColor"/>
+          <path *ngIf="part.id === 'forward'" d="M 43 32 L 43 12 L 15 12 L 15 96 L 43 96 L 43 116 L 113 64 Z" fill="currentColor"/>
           <!-- Diagonal directions -->
           <path *ngIf="part.id === 'up-back'" d="M 8 8 L 60 8 L 60 28 L 28 60 L 8 60 Z M 60 8 L 120 68 L 100 88 L 40 28 L 60 8 Z" fill="currentColor"/>
           <path *ngIf="part.id === 'up-forward'" d="M 120 8 L 68 8 L 68 28 L 100 60 L 120 60 Z M 68 8 L 8 68 L 28 88 L 88 28 L 68 8 Z" fill="currentColor"/>
