@@ -1,57 +1,43 @@
-<!--
-  HOME PAGE
-  
-  The home page shows site updates - a list of recent changes to the site.
-  This is a simple page with just text content.
--->
 <div class="home-page">
-  <div class="page-title">SITE UPDATES</div>
+  <div class="page-title">KOMBAT AKADEMY</div>
   <div class="page-content">
-    <div class="updates-list">
-      <!-- Update Entry 1 -->
-      <div class="update-item">
-        <div class="update-date">10/10/2024</div>
-        <ul>
-          <li>Added <a routerLink="/move-list" [queryParams]="{character: 'Cyrax'}">Cyrax</a> frame data and <a routerLink="/combos" [queryParams]="{character: 'Cyrax'}">Cyrax</a> combos</li>
-          <li>Added <a routerLink="/move-list" [queryParams]="{character: 'Noob Saibot'}">Noob Saibot</a> frame data and <a routerLink="/combos" [queryParams]="{character: 'Noob Saibot'}">Noob Saibot</a> combos</li>
-          <li>Added <a routerLink="/move-list" [queryParams]="{character: 'Sektor'}">Sektor</a> frame data and <a routerLink="/combos" [queryParams]="{character: 'Sektor'}">Sektor</a> combos</li>
-          <li>Added Combos section to all character pages</li>
-          <li>Updated <a routerLink="/tier-maker">Tier Maker</a> with new additional options</li>
-          <li>Updated frame data for latest patches</li>
-        </ul>
-      </div>
-      <!-- Update Entry 2 -->
-      <div class="update-item">
-        <div class="update-date">08/07/2024</div>
-        <ul>
-          <li>Added <a routerLink="/move-list" [queryParams]="{character: 'Takeda'}">Takeda</a> and <a routerLink="/move-list" [queryParams]="{kameo: 'Ferra'}">Ferra</a> frame data and <a routerLink="/combos" [queryParams]="{character: 'Takeda'}">Takeda</a> combos</li>
-          <li>Added a Gameplay page showing tournament footage of individual characters and/or kameos</li>
-          <li>Added Gameplay section to all character pages</li>
-          <li>Updated combos for <a routerLink="/combos" [queryParams]="{character: 'Li Mei'}">Li Mei</a>, <a routerLink="/combos" [queryParams]="{character: 'Smoke'}">Smoke</a>, and <a routerLink="/combos" [queryParams]="{character: 'Sub-Zero'}">Sub-Zero</a></li>
-          <li>Updated frame data and guides for latest patches</li>
-        </ul>
-      </div>
-      <!-- Update Entry 3 -->
-      <div class="update-item">
-        <div class="update-date">06/20/2024</div>
-        <ul>
-          <li>Added <a routerLink="/move-list" [queryParams]="{character: 'Homelander'}">Homelander</a> frame data</li>
-          <li>Added <a routerLink="/combos" [queryParams]="{character: 'Homelander'}">Homelander</a> combos</li>
-          <li>Added <a routerLink="/teams">Teams</a> page which lists recommended Kameos to use for each character</li>
-          <li>Added recommended Kameos to all character pages' Kameo section</li>
-          <li>Updated frame data for latest patches</li>
-        </ul>
-      </div>
-      <!-- Update Entry 4 -->
-      <div class="update-item">
-        <div class="update-date">05/01/2024</div>
-        <ul>
-          <li>Added <a routerLink="/move-list" [queryParams]="{character: 'Quan Chi'}">Quan Chi</a> frame data and <a routerLink="/combos" [queryParams]="{character: 'Quan Chi'}">Quan Chi</a> combos</li>
-          <li>Added <a routerLink="/kameos">Kameos</a> page with all available Kameos</li>
-          <li>Updated frame data for latest patches</li>
-        </ul>
-      </div>
+    <p class="home-subtitle">Your ultimate resource for Mortal Kombat 1 frame data, combos, and strategy.</p>
+    <div class="home-grid">
+      <a routerLink="/characters" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="home-card-title">CHARACTERS</div>
+        <div class="home-card-desc">View all characters with stats, moves, and combos.</div>
+      </a>
+      <a routerLink="/kameos" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-id-card"></i></div>
+        <div class="home-card-title">KAMEOS</div>
+        <div class="home-card-desc">Browse all Kameo fighters and their assist moves.</div>
+      </a>
+      <a routerLink="/move-list" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-list"></i></div>
+        <div class="home-card-title">MOVE LIST</div>
+        <div class="home-card-desc">Full frame data for every character and Kameo.</div>
+      </a>
+      <a routerLink="/combos" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-fire"></i></div>
+        <div class="home-card-title">COMBOS</div>
+        <div class="home-card-desc">Midscreen and corner combos for all characters.</div>
+      </a>
+      <a routerLink="/guides" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-book"></i></div>
+        <div class="home-card-title">GUIDES</div>
+        <div class="home-card-desc">Learn the mechanics and fundamentals of MK1.</div>
+      </a>
+      <a routerLink="/tier-maker" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-ranking-star"></i></div>
+        <div class="home-card-title">TIER MAKER</div>
+        <div class="home-card-desc">Create and share your own tier lists.</div>
+      </a>
+      <a routerLink="/teams" class="home-card">
+        <div class="home-card-icon"><i class="fa-solid fa-people-group"></i></div>
+        <div class="home-card-title">TEAMS</div>
+        <div class="home-card-desc">Recommended Kameo pairings for every character.</div>
+      </a>
     </div>
-    <a routerLink="/updates" class="view-all-link">View all updates</a>
   </div>
 </div>

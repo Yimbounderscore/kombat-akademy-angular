@@ -24,7 +24,6 @@
   min-height: 32px;
 }
 
-.site-header-top-left,
 .site-header-top-right {
   display: flex;
   align-items: center;
@@ -33,20 +32,6 @@
 .site-header-top-right {
   margin-left: auto;
   gap: 16px;
-}
-
-/* Donate button styling */
-.donate-btn {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 18px;
-  color: var(--color);
-  transition: color 0.25s;
-}
-
-.donate-btn:hover {
-  color: #fff;
 }
 
 /* Platform selector - the dropdown for choosing PlayStation/Xbox/etc */
@@ -281,10 +266,6 @@ body.light-theme .theme-selector {
 /* === RESPONSIVE === */
 /* On smaller screens, hide desktop nav and show mobile menu button */
 @media screen and (max-width: 1024px) {
-  .site-header-top-left {
-    display: none;
-  }
-
   .site-header-nav {
     display: none;
   }
