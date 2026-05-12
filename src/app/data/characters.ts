@@ -645,6 +645,44 @@ export const CHARACTERS: { [key: string]: Character } = {
       range: 4,
       zoning: 3
     }
+  },
+  'Conan': {
+    name: 'Conan',
+    slug: 'conan-the-barbarian',
+    type: 'Brawler',
+    description: 'A Cimmerian barbarian from the Hyborian Age, wielding his might and blade.',
+    color: 'rgb(160, 80, 40)',
+    colorDark: 'rgb(80, 40, 20)',
+    health: 800,
+    pros: ['High health', 'Strong damage'],
+    cons: ['Slower movement'],
+    stats: {
+      offense: 4,
+      defense: 3,
+      damage: 4,
+      mobility: 3,
+      range: 3,
+      zoning: 2
+    }
+  },
+  'T-1000': {
+    name: 'T-1000',
+    slug: 't-1000',
+    type: 'Balanced',
+    description: 'A shapeshifting liquid metal assassin from the future.',
+    color: 'rgb(192, 192, 255)',
+    colorDark: 'rgb(96, 96, 128)',
+    health: 650,
+    pros: ['Good mixups', 'Shapeshifting abilities'],
+    cons: ['Lower health'],
+    stats: {
+      offense: 4,
+      defense: 3,
+      damage: 3,
+      mobility: 4,
+      range: 3,
+      zoning: 3
+    }
   }
 };
 
