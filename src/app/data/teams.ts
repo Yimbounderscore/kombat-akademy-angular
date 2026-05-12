@@ -25,7 +25,7 @@ export const TEAMS: { [characterName: string]: string[] } = {
   'Shang Tsung': ['Goro', 'Khameleon', 'Kano', 'Mavado'],
   'Sindel': ['Kung Lao', 'Sub-Zero', 'Khameleon', 'Cyrax'],
   'Smoke': ['Goro', 'Sektor', 'Kung Lao', 'Sub-Zero', 'Scorpion'],
-  'Sub-Zero': ['Ferra', 'Khameleon', 'Sonya', 'Darrius'],
+  'Sub-Zero': ['Ferra', 'Khameleon', 'Darrius', 'Frost', 'Cyrax'],
   'Takeda': ['Jax', 'Sektor', 'Scorpion', 'Janet Cage', 'Kano'],
   'Tanya': ['Motaro', 'Goro']
 };
