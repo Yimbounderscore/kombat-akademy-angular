@@ -4,12 +4,12 @@
 
   <!-- NAVIGATION BAR: Sticky top bar for jumping to sections -->
   <nav class="char-nav">
-    <a (click)="scrollTo('overview')" class="char-nav-link"><i class="fa-solid fa-user-ninja"></i> OVERVIEW</a>
-    <a (click)="scrollTo('move-list')" class="char-nav-link"><i class="fa-solid fa-rectangle-list"></i> MOVE LIST</a>
-    <a (click)="scrollTo('combos')" class="char-nav-link"><i class="fa-solid fa-hand-fist"></i> COMBOS</a>
-    <a (click)="scrollTo('introductions')" class="char-nav-link"><i class="fa-solid fa-brain"></i> INTRODUCTIONS</a>
-    <a (click)="scrollTo('kameos')" class="char-nav-link"><i class="fa-solid fa-user-group"></i> KAMEOS</a>
-    <a (click)="scrollTo('gameplay')" class="char-nav-link"><i class="fa-solid fa-tv"></i> GAMEPLAY</a>
+    <a (click)="scrollToSection('overview')" class="char-nav-link"><i class="fa-solid fa-user-ninja"></i> OVERVIEW</a>
+    <a (click)="scrollToSection('move-list')" class="char-nav-link"><i class="fa-solid fa-rectangle-list"></i> MOVE LIST</a>
+    <a (click)="scrollToSection('combos')" class="char-nav-link"><i class="fa-solid fa-hand-fist"></i> COMBOS</a>
+    <a (click)="scrollToSection('introductions')" class="char-nav-link"><i class="fa-solid fa-brain"></i> INTRODUCTIONS</a>
+    <a (click)="scrollToSection('kameos')" class="char-nav-link"><i class="fa-solid fa-user-group"></i> KAMEOS</a>
+    <a (click)="scrollToSection('gameplay')" class="char-nav-link"><i class="fa-solid fa-tv"></i> GAMEPLAY</a>
   </nav>
 
   <!-- CHARACTER HEADER: Render -->
@@ -232,7 +232,7 @@
         <div class="subcategory-header" *ngIf="sub">
           <h3>{{ sub }}</h3>
         </div>
-        <div class="combo-item" *ngFor="let combo of getCombosBySubcategory(sub)">
+        <div class="combo-item" *ngFor="let combo of getCombosBySubcategory(sub); let i = index">
           <div class="combo-header">
             <span class="combo-difficulty" [ngClass]="getDifficultyClass(combo.difficulty)">
               {{ combo.difficulty }}
@@ -248,7 +248,7 @@
             <i class="fa-solid fa-circle-info"></i> {{ combo.notes }}
           </div>
           <div class="combo-video" *ngIf="combo.url">
-            <a [href]="combo.url" target="_blank" rel="noopener">
+            <a (click)="openVideoPlayer(combo, i)" class="video-btn">
               <i class="fa-solid fa-video"></i> Watch Video
             </a>
           </div>
@@ -295,6 +295,13 @@
     </div>
   </section>
 </div>
+
+<app-video-player
+  [visible]="videoPlayerVisible"
+  [playlist]="videoPlaylist"
+  [startIndex]="videoStartIndex"
+  (close)="videoPlayerVisible = false">
+</app-video-player>
 
 <!-- NOT FOUND -->
 <div class="not-found" *ngIf="!character && !isLoadingMoves">

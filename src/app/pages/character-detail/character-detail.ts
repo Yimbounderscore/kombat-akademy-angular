@@ -18,6 +18,7 @@ import { COMBO_THEORY } from '../../data/combo-theory';
 import { MOVE_NOTES } from '../../data/move-notes';
 import { GameDataService, MoveData, ComboData } from '../../services/game-data';
 import { InputNotationComponent } from '../../components/input-notation/input-notation';
+import { VideoPlayerComponent } from '../../components/video-player/video-player';
 
 interface GameplayVideo {
   title: string;
@@ -28,7 +29,7 @@ interface GameplayVideo {
 
 @Component({
   selector: 'app-character-detail',
-  imports: [RouterLink, NgFor, NgIf, NgClass, InputNotationComponent],
+  imports: [RouterLink, NgFor, NgIf, NgClass, InputNotationComponent, VideoPlayerComponent],
   templateUrl: './character-detail.html',
   styleUrl: './character-detail.css',
 })
@@ -59,6 +60,10 @@ export class CharacterDetail implements OnInit {
   isLoadingMoves: boolean = true;
   isLoadingCombos: boolean = true;
   isLoadingGameplay: boolean = true;
+
+  videoPlayerVisible: boolean = false;
+  videoPlaylist: { title: string; description: string; url: string }[] = [];
+  videoStartIndex: number = 0;
 
   moveTabs = [
     { id: 'Basic Attacks', name: 'BASIC ATTACKS' },
@@ -166,6 +171,15 @@ export class CharacterDetail implements OnInit {
     return this.filteredMoves.filter(m => m.subcategory === sub);
   }
 
+  openVideoPlayer(combo: ComboData, index: number): void {
+    this.videoPlaylist = this.filteredCombos
+      .filter(c => c.url)
+      .map(c => ({ title: c.combo, description: c.notes || '', url: c.url }));
+    this.videoStartIndex = this.videoPlaylist.findIndex(v => v.url === combo.url);
+    if (this.videoStartIndex < 0) this.videoStartIndex = 0;
+    this.videoPlayerVisible = true;
+  }
+
   setActiveComboTab(tabId: string): void {
     this.activeComboTab = tabId;
     this.filterCombos();
@@ -216,7 +230,7 @@ export class CharacterDetail implements OnInit {
     return `/assets/images/kameos/portraits/${this.getKameoSlug(name)}.png`;
   }
 
-  scrollTo(sectionId: string): void {
+  scrollToSection(sectionId: string): void {
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });

@@ -10,7 +10,6 @@ import { GuideTheMatch } from './pages/guides/the-match/the-match';
 import { About } from './pages/about/about';
 import { Contact } from './pages/contact/contact';
 import { Credits } from './pages/credits/credits';
-import { PrivacyPolicy } from './pages/privacy/privacy';
 import { TermsOfService } from './pages/terms/terms';
 import { Updates } from './pages/updates/updates';
 import { Teams } from './pages/teams/teams';
@@ -30,7 +29,6 @@ export const routes: Routes = [
   { path: 'about', component: About },
   { path: 'contact', component: Contact },
   { path: 'credits', component: Credits },
-  { path: 'privacy-policy', component: PrivacyPolicy },
   { path: 'terms-of-service', component: TermsOfService },
   { path: 'updates', component: Updates },
   { path: '**', redirectTo: '' }

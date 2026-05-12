@@ -4,7 +4,7 @@
     <div class="character-roster">
       <div class="character-roster-row" *ngFor="let row of characterRows">
         <a *ngFor="let character of row"
-           [routerLink]="['/character', character.slug]"
+           (click)="showStats(character)"
            class="character-portrait"
            [style.background-image]="'url(/assets/images/characters/portraits/' + character.slug + '.jpg)'"
            [title]="character.name">
@@ -13,3 +13,39 @@
     </div>
   </div>
 </div>
+
+<app-dialog [visible]="statsVisible" title="Character Info" (close)="hideStats()">
+  <div class="stats-dialog" *ngIf="selectedCharacter">
+    <div class="stats-header">
+      <img [src]="'/assets/images/characters/square/' + selectedCharacter.slug + '.png'" [alt]="selectedCharacter.name" class="stats-portrait" />
+      <div>
+        <div class="stats-name">{{ selectedCharacter.name.toUpperCase() }}</div>
+        <div class="stats-type" [style.color]="selectedCharacter.color">Type: {{ selectedCharacter.type }}</div>
+        <div class="stats-health">Health: {{ selectedCharacter.health }}</div>
+        <div class="stats-desc">{{ selectedCharacter.description }}</div>
+      </div>
+    </div>
+    <div class="stats-chart" *ngIf="selectedCharacter.stats">
+      <div class="stats-row" *ngFor="let key of ['offense', 'defense', 'damage', 'mobility', 'range', 'zoning']">
+        <span class="stats-label">{{ key.toUpperCase() }}</span>
+        <div class="stats-bar-track">
+          <div class="stats-bar-fill" [style.width.%]="getStatWidth(getStatValue(key))" [style.background-color]="selectedCharacter.color"></div>
+        </div>
+        <span class="stats-value">{{ getStatValue(key) }}/5</span>
+      </div>
+    </div>
+    <div class="stats-pros-cons" *ngIf="selectedCharacter.pros.length || selectedCharacter.cons.length">
+      <div class="stats-pros" *ngIf="selectedCharacter.pros.length">
+        <div class="stats-pros-cons-title">PROS</div>
+        <ul><li *ngFor="let pro of selectedCharacter.pros">{{ pro }}</li></ul>
+      </div>
+      <div class="stats-cons" *ngIf="selectedCharacter.cons.length">
+        <div class="stats-pros-cons-title">CONS</div>
+        <ul><li *ngFor="let con of selectedCharacter.cons">{{ con }}</li></ul>
+      </div>
+    </div>
+    <div class="stats-link">
+      <a [routerLink]="['/character', selectedCharacter.slug]">View Full Character Page</a>
+    </div>
+  </div>
+</app-dialog>

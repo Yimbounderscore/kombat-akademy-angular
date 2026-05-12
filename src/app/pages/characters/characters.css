@@ -51,3 +51,119 @@
     height: 48px;
   }
 }
+
+/* Stats dialog */
+.stats-dialog {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.stats-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stats-portrait {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.stats-name {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.stats-type {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.stats-health {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--color);
+}
+
+.stats-desc {
+  font-size: 14px;
+  color: rgb(192, 192, 192);
+  line-height: 1.4;
+}
+
+.stats-chart {
+  margin-bottom: 20px;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.stats-label {
+  width: 72px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--color);
+}
+
+.stats-bar-track {
+  flex: 1;
+  height: 12px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stats-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.stats-value {
+  width: 32px;
+  font-size: 12px;
+  text-align: right;
+  color: var(--color);
+}
+
+.stats-pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.stats-pros-cons-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.stats-pros ul, .stats-cons ul {
+  list-style: disc;
+  margin-left: 18px;
+  font-size: 14px;
+}
+
+.stats-pros li, .stats-cons li {
+  margin-bottom: 4px;
+}
+
+.stats-link {
+  text-align: center;
+}
+
+.stats-link a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--bg-row-1);
+  border: 1px solid rgb(64, 64, 64);
+  border-radius: 4px;
+  font-size: 14px;
+}
