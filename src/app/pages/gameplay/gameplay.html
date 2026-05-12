@@ -1,0 +1,48 @@
+<div class="gameplay-page">
+  <div class="page-title">GAMEPLAY</div>
+  <div class="page-content">
+    <p class="gameplay-page-description">Select a Character and/or Kameo below to view their gameplay.</p>
+    <div class="gameplay-select">
+      <div class="gameplay-select-header">
+        <div>CHARACTER</div>
+        <div>KAMEO</div>
+      </div>
+      <div class="gameplay-select-row">
+        <div>
+          <select (change)="onCharacterChange($event)">
+            <option value="">None</option>
+            <option *ngFor="let c of characters" [value]="c.name">{{ c.name }}</option>
+          </select>
+        </div>
+        <div>
+          <select (change)="onKameoChange($event)">
+            <option value="">None</option>
+            <option *ngFor="let k of kameos" [value]="k.name">{{ k.name }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading" *ngIf="isLoading">Loading gameplay videos...</div>
+
+    <div class="gameplay" *ngIf="!isLoading">
+      <div class="videos">
+        <div class="video-item" *ngFor="let video of filteredVideos">
+          <div class="video-embed">
+            <a [href]="video.url" target="_blank" rel="noopener noreferrer">
+              <img [src]="'https://img.youtube.com/vi/' + getYoutubeId(video.url) + '/mqdefault.jpg'" alt="{{ video.title }}" />
+            </a>
+          </div>
+          <div class="video-info">
+            <div class="video-title">{{ video.title }}</div>
+            <div class="video-desc" *ngIf="video.description">{{ video.description }}</div>
+            <div class="video-date">{{ formatDate(video.date) }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="empty-state" *ngIf="filteredVideos.length === 0 && !isLoading">
+        <p>No gameplay videos found for the selected criteria.</p>
+      </div>
+    </div>
+  </div>
+</div>

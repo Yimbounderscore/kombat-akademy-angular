@@ -1,0 +1,4 @@
+.credits-page .page-content p { font-size: 20px; margin-bottom: 16px; }
+.credits-page .page-content ul { font-size: 20px; margin-left: 20px; }
+.credits-page .page-content li { margin-bottom: 8px; }
+@media screen and (max-width: 1024px) { .credits-page .page-content p, .credits-page .page-content ul { font-size: 16px; } }

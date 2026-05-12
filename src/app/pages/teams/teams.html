@@ -1,0 +1,40 @@
+<div class="teams-page">
+  <div class="page-title">TEAMS</div>
+  <div class="page-content">
+    <p>The following is a list of each character and their recommended Kameos for use in competitive play. All information below is subject to change.</p>
+    <div class="teams-container">
+      <div>
+        <table>
+          <tr>
+            <th style="width:25%">Character</th>
+            <th>Kameos</th>
+          </tr>
+          <tr *ngFor="let character of characters">
+            <td>{{ character.name }}</td>
+            <td>
+              <span *ngFor="let kameo of (teams[character.name] || []); let last = last">
+                {{ kameo }}<span *ngIf="!last">, </span>
+              </span>
+              <span *ngIf="!(teams[character.name] || []).length">N/A</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <th>Kameo Popularity</th>
+          </tr>
+          <tr>
+            <td>
+              <div *ngFor="let k of kameoPopularity">
+                <div>{{ k.name }}</div>
+                <div>{{ k.count }}</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

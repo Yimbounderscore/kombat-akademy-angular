@@ -7,6 +7,15 @@ import { KameoDetail } from './pages/kameo-detail/kameo-detail';
 import { TierMaker } from './pages/tier-maker/tier-maker';
 import { Guides } from './pages/guides/guides';
 import { GuideTheMatch } from './pages/guides/the-match/the-match';
+import { About } from './pages/about/about';
+import { Contact } from './pages/contact/contact';
+import { Credits } from './pages/credits/credits';
+import { Donate } from './pages/donate/donate';
+import { PrivacyPolicy } from './pages/privacy/privacy';
+import { TermsOfService } from './pages/terms/terms';
+import { Updates } from './pages/updates/updates';
+import { Teams } from './pages/teams/teams';
+import { Gameplay } from './pages/gameplay/gameplay';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -17,5 +26,14 @@ export const routes: Routes = [
   { path: 'tier-maker', component: TierMaker },
   { path: 'guides', component: Guides },
   { path: 'guides/the-match', component: GuideTheMatch },
+  { path: 'teams', component: Teams },
+  { path: 'gameplay', component: Gameplay },
+  { path: 'about', component: About },
+  { path: 'contact', component: Contact },
+  { path: 'credits', component: Credits },
+  { path: 'donate', component: Donate },
+  { path: 'privacy-policy', component: PrivacyPolicy },
+  { path: 'terms-of-service', component: TermsOfService },
+  { path: 'updates', component: Updates },
   { path: '**', redirectTo: '' }
 ];

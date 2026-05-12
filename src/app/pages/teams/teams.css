@@ -1,0 +1,44 @@
+.teams-page p {
+  text-align: center;
+  font-size: 20px;
+}
+
+.teams-container {
+  display: flex;
+  gap: 8px;
+}
+
+.teams-container > div:first-child {
+  width: 75%;
+}
+
+.teams-container > div:last-child {
+  width: 25%;
+}
+
+.teams-container table {
+  width: 100%;
+}
+
+.teams-container table a {
+  color: unset;
+}
+
+.teams-container > div:last-child table td > div {
+  display: flex;
+}
+
+.teams-container > div:last-child table td > div > div:last-child {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .teams-container {
+    flex-direction: column;
+  }
+
+  .teams-container > div:first-child,
+  .teams-container > div:last-child {
+    width: 100%;
+  }
+}

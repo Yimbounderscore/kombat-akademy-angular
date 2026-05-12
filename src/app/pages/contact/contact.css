@@ -1,0 +1,4 @@
+.contact-page .fa-envelope, .contact-page .fa-twitter { font-size: 24px; margin-right: 4px; }
+.contact-page .page-content p { font-size: 20px; margin-bottom: 16px; }
+.contact-page .page-content > div { font-size: 20px; margin-bottom: 8px; }
+@media screen and (max-width: 1024px) { .contact-page .page-content p, .contact-page .page-content > div { font-size: 16px; } }

@@ -1,0 +1,4 @@
+.donate-page .page-content p { font-size: 20px; margin-bottom: 16px; }
+.donate-page .page-content a { font-size: 20px; }
+.donate-btn-custom { align-items: center; background: rgb(32, 48, 64); border-radius: 12px; color: #fff; display: inline-flex; font-size: 24px; font-weight: bold; gap: 8px; height: 60px; line-height: 27px; padding: 0 24px; text-decoration: none; }
+.donate-btn-custom:hover { filter: brightness(125%); color: #fff; }

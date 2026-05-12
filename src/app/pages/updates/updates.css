@@ -1,0 +1,31 @@
+.update-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 24px 0;
+}
+
+.update-item:last-child {
+  border-bottom: none;
+}
+
+.update-date {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.update-item ul {
+  list-style: disc;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.update-item li {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+  .update-date { font-size: 20px; }
+  .update-item li { font-size: 16px; line-height: 24px; }
+}
