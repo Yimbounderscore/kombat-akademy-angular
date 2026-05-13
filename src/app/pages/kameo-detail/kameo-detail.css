@@ -142,6 +142,20 @@
   font-size: 13px;
 }
 
+.move-notes-row td {
+  color: rgb(160, 160, 160);
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+.move-notes {
+  white-space: pre-line;
+}
+
+:host-context(body.light-theme) .move-notes-row td {
+  color: rgb(80, 80, 80);
+}
+
 .block-high { color: rgb(255, 128, 128); }
 .block-mid { color: rgb(255, 224, 128); }
 .block-low { color: rgb(128, 192, 255); }

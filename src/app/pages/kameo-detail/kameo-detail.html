@@ -92,22 +92,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let move of getMovesBySubcategory(subcategory)">
-                  <td class="move-name">{{ move.move_name }}</td>
-                  <td class="move-command">
-                    <app-input-notation [input]="move.command" size="s"></app-input-notation>
-                  </td>
-                  <td class="move-block" [ngClass]="getBlockClass(move.block_type)">
-                    <span *ngIf="move.block_type">{{ move.block_type }}</span>
-                  </td>
-                  <td>{{ move.hit_damage }}</td>
-                  <td>{{ move.startup }}</td>
-                  <td>{{ move.active }}</td>
-                  <td>{{ move.recovery }}</td>
-                  <td>{{ move.cancel }}</td>
-                  <td>{{ move.hit_advantage }}</td>
-                  <td>{{ move.block_advantage }}</td>
-                </tr>
+                <ng-container *ngFor="let move of getMovesBySubcategory(subcategory)">
+                  <tr>
+                    <td class="move-name">{{ move.move_name }}</td>
+                    <td class="move-command">
+                      <app-input-notation [input]="move.command" size="s"></app-input-notation>
+                    </td>
+                    <td class="move-block" [ngClass]="getBlockClass(move.block_type)">
+                      <span *ngIf="move.block_type">{{ move.block_type }}</span>
+                    </td>
+                    <td>{{ move.hit_damage }}</td>
+                    <td>{{ move.startup }}</td>
+                    <td>{{ move.active }}</td>
+                    <td>{{ move.recovery }}</td>
+                    <td>{{ move.cancel }}</td>
+                    <td>{{ move.hit_advantage }}</td>
+                    <td>{{ move.block_advantage }}</td>
+                  </tr>
+                  <tr class="move-notes-row" *ngIf="move.properties || move.notes">
+                    <td colspan="10">
+                      <div class="move-notes">
+                        <span *ngIf="move.properties">{{ move.properties }}</span>
+                        <span *ngIf="move.notes && move.notes !== move.properties">{{ move.properties ? '\n' : '' }}{{ move.notes }}</span>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
               </tbody>
             </table>
           </div>
