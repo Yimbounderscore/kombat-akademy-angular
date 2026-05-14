@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DialogComponent } from '../dialog/dialog';
 
 @Component({
@@ -54,14 +55,17 @@ export class VideoPlayerComponent {
 
   currentIndex: number = 0;
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   get currentVideo() {
     return this.playlist[this.currentIndex];
   }
 
-  get embedUrl(): string {
+  get embedUrl(): SafeResourceUrl {
     if (!this.currentVideo?.url) return '';
     const id = this.getYoutubeId(this.currentVideo.url);
-    return id ? `https://www.youtube.com/embed/${id}?autoplay=1` : '';
+    const url = id ? `https://www.youtube.com/embed/${id}?autoplay=1` : '';
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   ngOnChanges(): void {
